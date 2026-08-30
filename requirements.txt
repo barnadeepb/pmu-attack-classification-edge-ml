@@ -1,0 +1,12 @@
+pandas>=1.5
+numpy>=1.23
+scikit-learn>=1.2
+xgboost>=1.7
+py7zr>=0.20
+joblib>=1.2
+matplotlib>=3.6
+requests>=2.28
+
+# Optional, only needed if TABPFN_ENABLE=1 (see README "Extreme case: TabPFN").
+# Uncomment to install:
+# tabpfn>=2.0
