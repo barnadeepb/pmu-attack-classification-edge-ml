@@ -44,6 +44,7 @@ from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.utils.class_weight import compute_sample_weight
 from xgboost import XGBClassifier
@@ -60,6 +61,14 @@ LATENCY_WARMUP = 20
 
 STREAMING_BUDGET_MS = 1000 / 60  # IEEE C37.118.2, 60 fps reporting rate
 TRIP_BUDGET_MS = 3.0             # IEC 61850-5, TT6 message class
+
+# Kernel SVM training is O(n^2)-O(n^3), infeasible to fit on the full
+# 78k-row dataset in reasonable time. Benchmarked on a stratified-by-chance
+# random subsample instead, same subsampling approach as the TabPFN extreme
+# case below. Accuracy/F1 numbers are therefore not directly comparable to
+# the core models (trained on ~62.7k rows, not ~1.6k) -- latency and size
+# are still real single-sample-inference numbers on the fitted model.
+SVM_SUBSAMPLE = 2000
 
 TABPFN_ENABLE = os.environ.get("TABPFN_ENABLE", "0") == "1"
 TABPFN_SUBSAMPLE = 2000
@@ -238,6 +247,60 @@ def run_core_models(X, y, class_names):
                 last_split_fits[name] = (pipeline, X_test, y_test)
 
     return pd.DataFrame(per_run_rows), confusion_totals, last_split_fits
+
+
+def run_svm(X, y, class_names):
+    print("\n=== SVM (RBF, subsampled) ===")
+    print(f"Kernel SVM does not scale to {len(X)} rows; subsampling to {SVM_SUBSAMPLE} rows/split.")
+
+    per_run_rows = []
+    confusion_total = np.zeros((len(class_names), len(class_names)), dtype=int)
+    rng = np.random.RandomState(0)
+
+    for split_i, seed in enumerate(SEEDS):
+        idx = rng.choice(len(X), size=min(SVM_SUBSAMPLE, len(X)), replace=False)
+        X_sub, y_sub = X.iloc[idx], y[idx]
+
+        splitter = StratifiedShuffleSplit(n_splits=1, test_size=TEST_SIZE, random_state=seed)
+        train_idx, test_idx = next(splitter.split(X_sub, y_sub))
+        X_train, X_test = X_sub.iloc[train_idx], X_sub.iloc[test_idx]
+        y_train, y_test = y_sub[train_idx], y_sub[test_idx]
+
+        pipeline = make_pipeline(SVC(kernel="rbf", class_weight="balanced", random_state=seed))
+        pipeline.fit(X_train, y_train)
+        y_pred = pipeline.predict(X_test)
+
+        acc = accuracy_score(y_test, y_pred)
+        f1_macro = f1_score(y_test, y_pred, average="macro")
+        f1_weighted = f1_score(y_test, y_pred, average="weighted")
+        precision_macro = precision_score(y_test, y_pred, average="macro", zero_division=0)
+        recall_macro = recall_score(y_test, y_pred, average="macro", zero_division=0)
+        latency_mean, latency_std = measure_latency(pipeline, X_test)
+        size_kb = measure_size_kb(pipeline)
+
+        confusion_total += confusion_matrix(y_test, y_pred, labels=range(len(class_names)))
+
+        per_run_rows.append(
+            {
+                "model": "SVM (RBF)",
+                "split": split_i,
+                "accuracy": acc,
+                "f1_macro": f1_macro,
+                "f1_weighted": f1_weighted,
+                "precision_macro": precision_macro,
+                "recall_macro": recall_macro,
+                "latency_ms_mean": latency_mean,
+                "latency_ms_std": latency_std,
+                "size_kb": size_kb,
+            }
+        )
+
+        print(
+            f"  split {split_i + 1}: acc={acc:.3f}  f1_macro={f1_macro:.3f}  "
+            f"latency={latency_mean:.3f}ms  size={size_kb:.1f}KB"
+        )
+
+    return pd.DataFrame(per_run_rows), confusion_total
 
 
 def run_tabpfn(X, y, class_names):
@@ -423,6 +486,10 @@ def main():
 
     per_run_df, confusion_totals, last_split_fits = run_core_models(X, y, class_names)
 
+    svm_df, svm_confusion = run_svm(X, y, class_names)
+    per_run_df = pd.concat([per_run_df, svm_df], ignore_index=True)
+    confusion_totals["SVM (RBF)"] = svm_confusion
+
     if TABPFN_ENABLE:
         tabpfn_df = run_tabpfn(X, y, class_names)
         if not tabpfn_df.empty:
@@ -444,6 +511,7 @@ def main():
                 "test_size": TEST_SIZE,
                 "streaming_budget_ms": STREAMING_BUDGET_MS,
                 "trip_budget_ms": TRIP_BUDGET_MS,
+                "svm_subsample_rows": SVM_SUBSAMPLE,
                 "tabpfn_enabled": TABPFN_ENABLE,
                 "n_rows": int(len(X)),
                 "n_features": int(X.shape[1]),

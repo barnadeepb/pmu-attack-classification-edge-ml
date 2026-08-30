@@ -1,0 +1,64 @@
+model,true_label,predicted_label,count
+Logistic Regression,Attack,Attack,21450
+Logistic Regression,Attack,Natural,26531
+Logistic Regression,Attack,NoEvents,7684
+Logistic Regression,Natural,Attack,2453
+Logistic Regression,Natural,Natural,13246
+Logistic Regression,Natural,NoEvents,2611
+Logistic Regression,NoEvents,Attack,81
+Logistic Regression,NoEvents,Natural,210
+Logistic Regression,NoEvents,NoEvents,4114
+Decision Tree,Attack,Attack,50294
+Decision Tree,Attack,Natural,4979
+Decision Tree,Attack,NoEvents,392
+Decision Tree,Natural,Attack,5378
+Decision Tree,Natural,Natural,12814
+Decision Tree,Natural,NoEvents,118
+Decision Tree,NoEvents,Attack,461
+Decision Tree,NoEvents,Natural,105
+Decision Tree,NoEvents,NoEvents,3839
+Random Forest,Attack,Attack,52124
+Random Forest,Attack,Natural,3387
+Random Forest,Attack,NoEvents,154
+Random Forest,Natural,Attack,2761
+Random Forest,Natural,Natural,15525
+Random Forest,Natural,NoEvents,24
+Random Forest,NoEvents,Attack,94
+Random Forest,NoEvents,Natural,26
+Random Forest,NoEvents,NoEvents,4285
+XGBoost,Attack,Attack,40014
+XGBoost,Attack,Natural,13316
+XGBoost,Attack,NoEvents,2335
+XGBoost,Natural,Attack,2439
+XGBoost,Natural,Natural,15462
+XGBoost,Natural,NoEvents,409
+XGBoost,NoEvents,Attack,46
+XGBoost,NoEvents,Natural,45
+XGBoost,NoEvents,NoEvents,4314
+MLP (Full),Attack,Attack,48712
+MLP (Full),Attack,Natural,6275
+MLP (Full),Attack,NoEvents,678
+MLP (Full),Natural,Attack,7146
+MLP (Full),Natural,Natural,10995
+MLP (Full),Natural,NoEvents,169
+MLP (Full),NoEvents,Attack,520
+MLP (Full),NoEvents,Natural,125
+MLP (Full),NoEvents,NoEvents,3760
+MLP (Compact),Attack,Attack,52343
+MLP (Compact),Attack,Natural,2068
+MLP (Compact),Attack,NoEvents,1254
+MLP (Compact),Natural,Attack,15439
+MLP (Compact),Natural,Natural,2632
+MLP (Compact),Natural,NoEvents,239
+MLP (Compact),NoEvents,Attack,1207
+MLP (Compact),NoEvents,Natural,16
+MLP (Compact),NoEvents,NoEvents,3182
+SVM (RBF),Attack,Attack,614
+SVM (RBF),Attack,Natural,293
+SVM (RBF),Attack,NoEvents,502
+SVM (RBF),Natural,Attack,163
+SVM (RBF),Natural,Natural,157
+SVM (RBF),Natural,NoEvents,155
+SVM (RBF),NoEvents,Attack,17
+SVM (RBF),NoEvents,Natural,5
+SVM (RBF),NoEvents,NoEvents,94
