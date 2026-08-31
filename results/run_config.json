@@ -17,5 +17,6 @@
     "Attack",
     "Natural",
     "NoEvents"
-  ]
+  ],
+  "alerting_budget_ms": 100.0
 }

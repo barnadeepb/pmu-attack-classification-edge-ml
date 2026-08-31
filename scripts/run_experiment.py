@@ -59,8 +59,19 @@ TEST_SIZE = 0.2
 LATENCY_SAMPLES = 200
 LATENCY_WARMUP = 20
 
-STREAMING_BUDGET_MS = 1000 / 60  # IEEE C37.118.2, 60 fps reporting rate
-TRIP_BUDGET_MS = 3.0             # IEC 61850-5, TT6 message class
+STREAMING_BUDGET_MS = 1000 / 60  # IEEE C37.118.2, 60 fps reporting rate -- the
+                                  # real, unconditional constraint: a model has
+                                  # to keep up with its own input stream regardless
+                                  # of how its output is used downstream.
+TRIP_BUDGET_MS = 3.0             # IEC 61850-5 TT6 ("trips, blockings") -- an
+                                  # illustrative stretch case, only meaningful if
+                                  # a future architecture used this classifier's
+                                  # verdict to gate a specific trip command inline,
+                                  # not a claim that this is how it should be deployed.
+ALERTING_BUDGET_MS = 100.0       # IEC 61850-5 TT3 ("slow automatic interactions")
+                                  # -- the class a control-center/SOC-tier model
+                                  # (periodic re-scoring, forensic correlation,
+                                  # dashboard alerting) actually needs to clear.
 
 # Kernel SVM training is O(n^2)-O(n^3), infeasible to fit on the full
 # 78k-row dataset in reasonable time. Benchmarked on a stratified-by-chance
@@ -383,6 +394,7 @@ def aggregate_results(per_run_df):
 
     agg["meets_streaming_budget"] = agg["latency_ms_mean"] <= STREAMING_BUDGET_MS
     agg["meets_trip_budget"] = agg["latency_ms_mean"] <= TRIP_BUDGET_MS
+    agg["meets_alerting_budget"] = agg["latency_ms_mean"] <= ALERTING_BUDGET_MS
     agg = agg.sort_values("f1_macro_mean", ascending=False).reset_index(drop=True)
     return agg
 
@@ -425,34 +437,53 @@ def save_feature_importance(last_split_fits, feature_names):
 def make_plots(agg_df):
     PLOTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Bar chart: macro-F1 per model, with std error bars
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.bar(agg_df["model"], agg_df["f1_macro_mean"], yerr=agg_df["f1_macro_std"], capsize=4)
+    # Scatter: model size (log x) vs macro-F1 -- the footprint counterpart to
+    # the latency scatter below, so the two figures together cover both axes
+    # of the deployability trade-off that Table I reports numerically.
+    fig, ax = plt.subplots(figsize=(9, 6))
+    ax.scatter(agg_df["size_kb_mean"], agg_df["f1_macro_mean"], s=80, zorder=3, color="tab:blue")
+    for _, row in agg_df.iterrows():
+        ax.annotate(row["model"], (row["size_kb_mean"], row["f1_macro_mean"]),
+                    textcoords="offset points", xytext=(6, 4), fontsize=8)
+    ax.set_xscale("log")
+    ax.set_xlabel("Model size on disk (KB, log scale)")
     ax.set_ylabel("Macro F1-score")
-    ax.set_ylim(0, 1.05)
-    ax.set_title("Classification quality by model (mean +/- std across splits)")
-    plt.xticks(rotation=30, ha="right")
+    ax.set_title("Accuracy vs. model footprint")
     fig.tight_layout()
-    fig.savefig(PLOTS_DIR / "model_comparison_bars.png", dpi=150)
+    fig.savefig(PLOTS_DIR / "accuracy_vs_footprint.png", dpi=150)
+    fig.savefig(PLOTS_DIR / "accuracy_vs_footprint.svg")
     plt.close(fig)
 
-    # Scatter: latency (log x) vs macro-F1, with budget reference lines
-    fig, ax = plt.subplots(figsize=(9, 6))
-    ax.scatter(agg_df["latency_ms_mean"], agg_df["f1_macro_mean"], s=80)
+    # Scatter: latency (log x) vs macro-F1, with budget reference lines.
+    # Streaming is the one unconditional requirement (solid line). Trip-critical
+    # and alerting-tier are both IEC 61850-5 classes shown as illustrative
+    # reference points for two different, narrower deployment scenarios --
+    # not general requirements for a cybersecurity classifier -- so they're
+    # drawn lighter/dashed and labelled as such.
+    fig, ax = plt.subplots(figsize=(9.5, 6))
+    ax.scatter(agg_df["latency_ms_mean"], agg_df["f1_macro_mean"], s=80, zorder=3)
     for _, row in agg_df.iterrows():
         ax.annotate(row["model"], (row["latency_ms_mean"], row["f1_macro_mean"]),
                     textcoords="offset points", xytext=(6, 4), fontsize=8)
-    ax.axvline(TRIP_BUDGET_MS, color="red", linestyle="--", linewidth=1,
-               label=f"Trip-critical budget ({TRIP_BUDGET_MS:.1f} ms, IEC 61850-5 TT6)")
-    ax.axvline(STREAMING_BUDGET_MS, color="orange", linestyle="--", linewidth=1,
-               label=f"Streaming budget ({STREAMING_BUDGET_MS:.1f} ms, IEEE C37.118.2 @ 60fps)")
+
+    ax.axvline(STREAMING_BUDGET_MS, color="tab:orange", linestyle="-", linewidth=1.5,
+               label=f"Streaming budget ({STREAMING_BUDGET_MS:.1f} ms, IEEE C37.118.2 "
+                     f"@ 60fps) -- keeps pace with the PMU stream")
+    ax.axvline(TRIP_BUDGET_MS, color="tab:red", linestyle="--", linewidth=1,
+               label=f"Illustrative: IEC 61850-5 TT6 trip-critical class "
+                     f"({TRIP_BUDGET_MS:.1f} ms) -- inline trip-gating scenario only")
+    ax.axvline(ALERTING_BUDGET_MS, color="tab:gray", linestyle=":", linewidth=1.5,
+               label=f"Illustrative: IEC 61850-5 TT3 slow-automatic-interaction class "
+                     f"({ALERTING_BUDGET_MS:.0f} ms) -- control-center/SOC alerting tier")
+
     ax.set_xscale("log")
     ax.set_xlabel("Mean single-sample inference latency (ms, log scale)")
     ax.set_ylabel("Macro F1-score")
     ax.set_title("Accuracy vs. edge-deployment latency")
-    ax.legend(loc="lower right", fontsize=8)
+    ax.legend(loc="lower right", fontsize=7.5, framealpha=0.9)
     fig.tight_layout()
     fig.savefig(PLOTS_DIR / "accuracy_vs_latency.png", dpi=150)
+    fig.savefig(PLOTS_DIR / "accuracy_vs_latency.svg")
     plt.close(fig)
 
 
@@ -460,7 +491,8 @@ def print_summary(agg_df):
     print("\n" + "=" * 100)
     print("SUMMARY")
     print("=" * 100)
-    header = f"{'Model':<20}{'Acc':>8}{'F1-macro':>10}{'Latency(ms)':>13}{'Size(KB)':>10}{'Stream OK':>11}{'Trip OK':>9}"
+    header = (f"{'Model':<20}{'Acc':>8}{'F1-macro':>10}{'Latency(ms)':>13}{'Size(KB)':>10}"
+              f"{'Stream OK':>11}{'Alert OK':>10}{'Trip OK':>9}")
     print(header)
     print("-" * len(header))
     for _, row in agg_df.iterrows():
@@ -471,9 +503,33 @@ def print_summary(agg_df):
             f"{row['latency_ms_mean']:>13.3f}"
             f"{row['size_kb_mean']:>10.1f}"
             f"{'yes' if row['meets_streaming_budget'] else 'no':>11}"
+            f"{'yes' if row['meets_alerting_budget'] else 'no':>10}"
             f"{'yes' if row['meets_trip_budget'] else 'no':>9}"
         )
     print("=" * 100)
+
+
+def replot():
+    """Re-aggregate and re-plot from an existing per_split_results.csv,
+    without retraining anything. Useful after changing budgets/plot styling."""
+    per_run_path = RESULTS_DIR / "per_split_results.csv"
+    if not per_run_path.exists():
+        raise FileNotFoundError(f"{per_run_path} not found -- run the full experiment first.")
+
+    per_run_df = pd.read_csv(per_run_path)
+    agg_df = aggregate_results(per_run_df)
+    agg_df.to_csv(RESULTS_DIR / "model_comparison.csv", index=False)
+    make_plots(agg_df)
+
+    config_path = RESULTS_DIR / "run_config.json"
+    config = json.loads(config_path.read_text()) if config_path.exists() else {}
+    config["streaming_budget_ms"] = STREAMING_BUDGET_MS
+    config["trip_budget_ms"] = TRIP_BUDGET_MS
+    config["alerting_budget_ms"] = ALERTING_BUDGET_MS
+    config_path.write_text(json.dumps(config, indent=2))
+
+    print_summary(agg_df)
+    print(f"\nRe-plotted from {per_run_path}. Results written to {RESULTS_DIR}")
 
 
 def main():
@@ -511,6 +567,7 @@ def main():
                 "test_size": TEST_SIZE,
                 "streaming_budget_ms": STREAMING_BUDGET_MS,
                 "trip_budget_ms": TRIP_BUDGET_MS,
+                "alerting_budget_ms": ALERTING_BUDGET_MS,
                 "svm_subsample_rows": SVM_SUBSAMPLE,
                 "tabpfn_enabled": TABPFN_ENABLE,
                 "n_rows": int(len(X)),
@@ -526,4 +583,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--replot" in sys.argv:
+        replot()
+    else:
+        main()
