@@ -1,0 +1,226 @@
+model,split,true_label,predicted_label,count
+Logistic Regression (tuned),0,Attack,Attack,4307
+Logistic Regression (tuned),0,Attack,Natural,5247
+Logistic Regression (tuned),0,Attack,NoEvents,1579
+Logistic Regression (tuned),0,Natural,Attack,498
+Logistic Regression (tuned),0,Natural,Natural,2657
+Logistic Regression (tuned),0,Natural,NoEvents,507
+Logistic Regression (tuned),0,NoEvents,Attack,14
+Logistic Regression (tuned),0,NoEvents,Natural,29
+Logistic Regression (tuned),0,NoEvents,NoEvents,838
+Logistic Regression (tuned),1,Attack,Attack,4328
+Logistic Regression (tuned),1,Attack,Natural,5294
+Logistic Regression (tuned),1,Attack,NoEvents,1511
+Logistic Regression (tuned),1,Natural,Attack,549
+Logistic Regression (tuned),1,Natural,Natural,2594
+Logistic Regression (tuned),1,Natural,NoEvents,519
+Logistic Regression (tuned),1,NoEvents,Attack,22
+Logistic Regression (tuned),1,NoEvents,Natural,58
+Logistic Regression (tuned),1,NoEvents,NoEvents,801
+Logistic Regression (tuned),2,Attack,Attack,4219
+Logistic Regression (tuned),2,Attack,Natural,5322
+Logistic Regression (tuned),2,Attack,NoEvents,1592
+Logistic Regression (tuned),2,Natural,Attack,465
+Logistic Regression (tuned),2,Natural,Natural,2669
+Logistic Regression (tuned),2,Natural,NoEvents,528
+Logistic Regression (tuned),2,NoEvents,Attack,17
+Logistic Regression (tuned),2,NoEvents,Natural,39
+Logistic Regression (tuned),2,NoEvents,NoEvents,825
+Logistic Regression (tuned),3,Attack,Attack,4297
+Logistic Regression (tuned),3,Attack,Natural,5380
+Logistic Regression (tuned),3,Attack,NoEvents,1456
+Logistic Regression (tuned),3,Natural,Attack,459
+Logistic Regression (tuned),3,Natural,Natural,2656
+Logistic Regression (tuned),3,Natural,NoEvents,547
+Logistic Regression (tuned),3,NoEvents,Attack,11
+Logistic Regression (tuned),3,NoEvents,Natural,38
+Logistic Regression (tuned),3,NoEvents,NoEvents,832
+Logistic Regression (tuned),4,Attack,Attack,4321
+Logistic Regression (tuned),4,Attack,Natural,5259
+Logistic Regression (tuned),4,Attack,NoEvents,1553
+Logistic Regression (tuned),4,Natural,Attack,495
+Logistic Regression (tuned),4,Natural,Natural,2652
+Logistic Regression (tuned),4,Natural,NoEvents,515
+Logistic Regression (tuned),4,NoEvents,Attack,19
+Logistic Regression (tuned),4,NoEvents,Natural,45
+Logistic Regression (tuned),4,NoEvents,NoEvents,817
+Decision Tree (tuned),0,Attack,Attack,9632
+Decision Tree (tuned),0,Attack,Natural,1402
+Decision Tree (tuned),0,Attack,NoEvents,99
+Decision Tree (tuned),0,Natural,Attack,1016
+Decision Tree (tuned),0,Natural,Natural,2627
+Decision Tree (tuned),0,Natural,NoEvents,19
+Decision Tree (tuned),0,NoEvents,Attack,63
+Decision Tree (tuned),0,NoEvents,Natural,17
+Decision Tree (tuned),0,NoEvents,NoEvents,801
+Decision Tree (tuned),1,Attack,Attack,9653
+Decision Tree (tuned),1,Attack,Natural,1349
+Decision Tree (tuned),1,Attack,NoEvents,131
+Decision Tree (tuned),1,Natural,Attack,1026
+Decision Tree (tuned),1,Natural,Natural,2621
+Decision Tree (tuned),1,Natural,NoEvents,15
+Decision Tree (tuned),1,NoEvents,Attack,69
+Decision Tree (tuned),1,NoEvents,Natural,16
+Decision Tree (tuned),1,NoEvents,NoEvents,796
+Decision Tree (tuned),2,Attack,Attack,9626
+Decision Tree (tuned),2,Attack,Natural,1421
+Decision Tree (tuned),2,Attack,NoEvents,86
+Decision Tree (tuned),2,Natural,Attack,959
+Decision Tree (tuned),2,Natural,Natural,2694
+Decision Tree (tuned),2,Natural,NoEvents,9
+Decision Tree (tuned),2,NoEvents,Attack,87
+Decision Tree (tuned),2,NoEvents,Natural,17
+Decision Tree (tuned),2,NoEvents,NoEvents,777
+Decision Tree (tuned),3,Attack,Attack,9832
+Decision Tree (tuned),3,Attack,Natural,1237
+Decision Tree (tuned),3,Attack,NoEvents,64
+Decision Tree (tuned),3,Natural,Attack,1010
+Decision Tree (tuned),3,Natural,Natural,2636
+Decision Tree (tuned),3,Natural,NoEvents,16
+Decision Tree (tuned),3,NoEvents,Attack,78
+Decision Tree (tuned),3,NoEvents,Natural,15
+Decision Tree (tuned),3,NoEvents,NoEvents,788
+Decision Tree (tuned),4,Attack,Attack,9751
+Decision Tree (tuned),4,Attack,Natural,1277
+Decision Tree (tuned),4,Attack,NoEvents,105
+Decision Tree (tuned),4,Natural,Attack,980
+Decision Tree (tuned),4,Natural,Natural,2664
+Decision Tree (tuned),4,Natural,NoEvents,18
+Decision Tree (tuned),4,NoEvents,Attack,84
+Decision Tree (tuned),4,NoEvents,Natural,21
+Decision Tree (tuned),4,NoEvents,NoEvents,776
+Random Forest (tuned),0,Attack,Attack,10325
+Random Forest (tuned),0,Attack,Natural,752
+Random Forest (tuned),0,Attack,NoEvents,56
+Random Forest (tuned),0,Natural,Attack,581
+Random Forest (tuned),0,Natural,Natural,3071
+Random Forest (tuned),0,Natural,NoEvents,10
+Random Forest (tuned),0,NoEvents,Attack,21
+Random Forest (tuned),0,NoEvents,Natural,8
+Random Forest (tuned),0,NoEvents,NoEvents,852
+Random Forest (tuned),1,Attack,Attack,10319
+Random Forest (tuned),1,Attack,Natural,765
+Random Forest (tuned),1,Attack,NoEvents,49
+Random Forest (tuned),1,Natural,Attack,597
+Random Forest (tuned),1,Natural,Natural,3055
+Random Forest (tuned),1,Natural,NoEvents,10
+Random Forest (tuned),1,NoEvents,Attack,27
+Random Forest (tuned),1,NoEvents,Natural,7
+Random Forest (tuned),1,NoEvents,NoEvents,847
+Random Forest (tuned),2,Attack,Attack,10284
+Random Forest (tuned),2,Attack,Natural,806
+Random Forest (tuned),2,Attack,NoEvents,43
+Random Forest (tuned),2,Natural,Attack,569
+Random Forest (tuned),2,Natural,Natural,3085
+Random Forest (tuned),2,Natural,NoEvents,8
+Random Forest (tuned),2,NoEvents,Attack,23
+Random Forest (tuned),2,NoEvents,Natural,11
+Random Forest (tuned),2,NoEvents,NoEvents,847
+Random Forest (tuned),3,Attack,Attack,10277
+Random Forest (tuned),3,Attack,Natural,820
+Random Forest (tuned),3,Attack,NoEvents,36
+Random Forest (tuned),3,Natural,Attack,584
+Random Forest (tuned),3,Natural,Natural,3072
+Random Forest (tuned),3,Natural,NoEvents,6
+Random Forest (tuned),3,NoEvents,Attack,18
+Random Forest (tuned),3,NoEvents,Natural,4
+Random Forest (tuned),3,NoEvents,NoEvents,859
+Random Forest (tuned),4,Attack,Attack,10238
+Random Forest (tuned),4,Attack,Natural,843
+Random Forest (tuned),4,Attack,NoEvents,52
+Random Forest (tuned),4,Natural,Attack,585
+Random Forest (tuned),4,Natural,Natural,3064
+Random Forest (tuned),4,Natural,NoEvents,13
+Random Forest (tuned),4,NoEvents,Attack,19
+Random Forest (tuned),4,NoEvents,Natural,8
+Random Forest (tuned),4,NoEvents,NoEvents,854
+XGBoost (tuned),0,Attack,Attack,10281
+XGBoost (tuned),0,Attack,Natural,817
+XGBoost (tuned),0,Attack,NoEvents,35
+XGBoost (tuned),0,Natural,Attack,589
+XGBoost (tuned),0,Natural,Natural,3069
+XGBoost (tuned),0,Natural,NoEvents,4
+XGBoost (tuned),0,NoEvents,Attack,12
+XGBoost (tuned),0,NoEvents,Natural,7
+XGBoost (tuned),0,NoEvents,NoEvents,862
+XGBoost (tuned),1,Attack,Attack,10258
+XGBoost (tuned),1,Attack,Natural,835
+XGBoost (tuned),1,Attack,NoEvents,40
+XGBoost (tuned),1,Natural,Attack,569
+XGBoost (tuned),1,Natural,Natural,3085
+XGBoost (tuned),1,Natural,NoEvents,8
+XGBoost (tuned),1,NoEvents,Attack,21
+XGBoost (tuned),1,NoEvents,Natural,4
+XGBoost (tuned),1,NoEvents,NoEvents,856
+XGBoost (tuned),2,Attack,Attack,10259
+XGBoost (tuned),2,Attack,Natural,843
+XGBoost (tuned),2,Attack,NoEvents,31
+XGBoost (tuned),2,Natural,Attack,578
+XGBoost (tuned),2,Natural,Natural,3082
+XGBoost (tuned),2,Natural,NoEvents,2
+XGBoost (tuned),2,NoEvents,Attack,16
+XGBoost (tuned),2,NoEvents,Natural,6
+XGBoost (tuned),2,NoEvents,NoEvents,859
+XGBoost (tuned),3,Attack,Attack,10298
+XGBoost (tuned),3,Attack,Natural,808
+XGBoost (tuned),3,Attack,NoEvents,27
+XGBoost (tuned),3,Natural,Attack,582
+XGBoost (tuned),3,Natural,Natural,3070
+XGBoost (tuned),3,Natural,NoEvents,10
+XGBoost (tuned),3,NoEvents,Attack,16
+XGBoost (tuned),3,NoEvents,Natural,1
+XGBoost (tuned),3,NoEvents,NoEvents,864
+XGBoost (tuned),4,Attack,Attack,10258
+XGBoost (tuned),4,Attack,Natural,839
+XGBoost (tuned),4,Attack,NoEvents,36
+XGBoost (tuned),4,Natural,Attack,548
+XGBoost (tuned),4,Natural,Natural,3110
+XGBoost (tuned),4,Natural,NoEvents,4
+XGBoost (tuned),4,NoEvents,Attack,20
+XGBoost (tuned),4,NoEvents,Natural,3
+XGBoost (tuned),4,NoEvents,NoEvents,858
+"MLP (tuned, oversampled)",0,Attack,Attack,8316
+"MLP (tuned, oversampled)",0,Attack,Natural,2549
+"MLP (tuned, oversampled)",0,Attack,NoEvents,268
+"MLP (tuned, oversampled)",0,Natural,Attack,785
+"MLP (tuned, oversampled)",0,Natural,Natural,2825
+"MLP (tuned, oversampled)",0,Natural,NoEvents,52
+"MLP (tuned, oversampled)",0,NoEvents,Attack,17
+"MLP (tuned, oversampled)",0,NoEvents,Natural,11
+"MLP (tuned, oversampled)",0,NoEvents,NoEvents,853
+"MLP (tuned, oversampled)",1,Attack,Attack,8873
+"MLP (tuned, oversampled)",1,Attack,Natural,2083
+"MLP (tuned, oversampled)",1,Attack,NoEvents,177
+"MLP (tuned, oversampled)",1,Natural,Attack,932
+"MLP (tuned, oversampled)",1,Natural,Natural,2699
+"MLP (tuned, oversampled)",1,Natural,NoEvents,31
+"MLP (tuned, oversampled)",1,NoEvents,Attack,46
+"MLP (tuned, oversampled)",1,NoEvents,Natural,19
+"MLP (tuned, oversampled)",1,NoEvents,NoEvents,816
+"MLP (tuned, oversampled)",2,Attack,Attack,8440
+"MLP (tuned, oversampled)",2,Attack,Natural,2477
+"MLP (tuned, oversampled)",2,Attack,NoEvents,216
+"MLP (tuned, oversampled)",2,Natural,Attack,821
+"MLP (tuned, oversampled)",2,Natural,Natural,2810
+"MLP (tuned, oversampled)",2,Natural,NoEvents,31
+"MLP (tuned, oversampled)",2,NoEvents,Attack,37
+"MLP (tuned, oversampled)",2,NoEvents,Natural,15
+"MLP (tuned, oversampled)",2,NoEvents,NoEvents,829
+"MLP (tuned, oversampled)",3,Attack,Attack,8639
+"MLP (tuned, oversampled)",3,Attack,Natural,2324
+"MLP (tuned, oversampled)",3,Attack,NoEvents,170
+"MLP (tuned, oversampled)",3,Natural,Attack,896
+"MLP (tuned, oversampled)",3,Natural,Natural,2730
+"MLP (tuned, oversampled)",3,Natural,NoEvents,36
+"MLP (tuned, oversampled)",3,NoEvents,Attack,34
+"MLP (tuned, oversampled)",3,NoEvents,Natural,17
+"MLP (tuned, oversampled)",3,NoEvents,NoEvents,830
+"MLP (tuned, oversampled)",4,Attack,Attack,8209
+"MLP (tuned, oversampled)",4,Attack,Natural,2688
+"MLP (tuned, oversampled)",4,Attack,NoEvents,236
+"MLP (tuned, oversampled)",4,Natural,Attack,832
+"MLP (tuned, oversampled)",4,Natural,Natural,2775
+"MLP (tuned, oversampled)",4,Natural,NoEvents,55
+"MLP (tuned, oversampled)",4,NoEvents,Attack,32
+"MLP (tuned, oversampled)",4,NoEvents,Natural,17
+"MLP (tuned, oversampled)",4,NoEvents,NoEvents,832

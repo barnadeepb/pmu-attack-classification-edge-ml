@@ -1,0 +1,37 @@
+[04:01:00] Search subsample: 20000 rows
+[04:01:00] --- tuning Logistic Regression (tuned) (12 candidates x 3 folds)
+[04:03:29]     search took 148s, best CV macro-F1=0.496
+[04:04:00]     split 0: acc=0.498 f1m=0.480 lat(np,1t)=0.64ms size=10KB
+[04:04:29]     split 1: acc=0.493 f1m=0.473 lat(np,1t)=0.63ms size=10KB
+[04:04:59]     split 2: acc=0.492 f1m=0.474 lat(np,1t)=0.62ms size=10KB
+[04:05:29]     split 3: acc=0.497 f1m=0.480 lat(np,1t)=0.63ms size=10KB
+[04:06:00]     split 4: acc=0.497 f1m=0.477 lat(np,1t)=0.63ms size=10KB
+[04:06:00] --- tuning Decision Tree (tuned) (12 candidates x 3 folds)
+[04:06:56]     search took 56s, best CV macro-F1=0.694
+[04:07:14]     split 0: acc=0.833 f1m=0.818 lat(np,1t)=0.60ms size=956KB
+[04:07:33]     split 1: acc=0.834 f1m=0.814 lat(np,1t)=0.60ms size=916KB
+[04:07:52]     split 2: acc=0.835 f1m=0.820 lat(np,1t)=0.59ms size=952KB
+[04:08:11]     split 3: acc=0.846 f1m=0.830 lat(np,1t)=0.59ms size=938KB
+[04:08:30]     split 4: acc=0.841 f1m=0.820 lat(np,1t)=0.59ms size=957KB
+[04:08:30] --- tuning Random Forest (tuned) (12 candidates x 3 folds)
+[04:09:55]     search took 85s, best CV macro-F1=0.754
+[04:10:46]     split 0: acc=0.909 f1m=0.901 lat(np,1t)=5.02ms size=38740KB
+[04:11:37]     split 1: acc=0.907 f1m=0.900 lat(np,1t)=4.70ms size=38794KB
+[04:12:27]     split 2: acc=0.907 f1m=0.901 lat(np,1t)=4.11ms size=38813KB
+[04:13:16]     split 3: acc=0.906 f1m=0.904 lat(np,1t)=4.14ms size=38867KB
+[04:14:06]     split 4: acc=0.903 f1m=0.896 lat(np,1t)=4.15ms size=38705KB
+[04:14:06] --- tuning XGBoost (tuned) (12 candidates x 3 folds)
+[04:19:21]     search took 314s, best CV macro-F1=0.787
+[04:19:57]     split 0: acc=0.907 f1m=0.905 lat(np,1t)=1.46ms size=4166KB
+[04:20:32]     split 1: acc=0.906 f1m=0.902 lat(np,1t)=1.47ms size=4164KB
+[04:21:08]     split 2: acc=0.906 f1m=0.905 lat(np,1t)=1.46ms size=4162KB
+[04:21:43]     split 3: acc=0.908 f1m=0.906 lat(np,1t)=1.48ms size=4163KB
+[04:22:18]     split 4: acc=0.908 f1m=0.905 lat(np,1t)=1.46ms size=4158KB
+[04:22:18] --- tuning MLP (tuned, oversampled) (12 candidates x 3 folds)
+[04:34:03]     search took 705s, best CV macro-F1=0.648
+[04:36:50]     split 0: acc=0.765 f1m=0.759 lat(np,1t)=0.75ms size=649KB
+[04:39:44]     split 1: acc=0.790 f1m=0.780 lat(np,1t)=0.75ms size=649KB
+[04:43:06]     split 2: acc=0.771 f1m=0.767 lat(np,1t)=0.75ms size=649KB
+[04:46:44]     split 3: acc=0.778 f1m=0.775 lat(np,1t)=0.76ms size=650KB
+[04:48:56]     split 4: acc=0.754 f1m=0.750 lat(np,1t)=0.75ms size=648KB
+[04:48:56] Done.

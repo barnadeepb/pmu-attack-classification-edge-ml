@@ -1,0 +1,236 @@
+[23:48:36] === split 1/5 ===
+[23:48:45]   Decision Tree depth=4                f1m=0.444 lat(np,1t)=0.70ms size=10KB
+[23:48:55]   Decision Tree depth=6                f1m=0.492 lat(np,1t)=0.65ms size=18KB
+[23:49:07]   Decision Tree depth=8                f1m=0.512 lat(np,1t)=0.73ms size=42KB
+[23:49:18]   Decision Tree depth=10               f1m=0.557 lat(np,1t)=0.61ms size=85KB
+[23:49:30]   Decision Tree depth=12               f1m=0.600 lat(np,1t)=0.59ms size=140KB
+[23:49:43]   Decision Tree depth=16               f1m=0.675 lat(np,1t)=0.60ms size=310KB
+[23:49:56]   Decision Tree depth=20               f1m=0.738 lat(np,1t)=0.59ms size=557KB
+[23:50:11]   Decision Tree depth=None             f1m=0.823 lat(np,1t)=0.60ms size=1157KB
+[23:50:36]   Random Forest trees=5,depth=None     f1m=0.861 lat(np,1t)=1.22ms size=5069KB
+[23:51:00]   Random Forest trees=5,depth=20       f1m=0.793 lat(np,1t)=1.23ms size=3450KB
+[23:51:24]   Random Forest trees=5,depth=12       f1m=0.649 lat(np,1t)=1.03ms size=1189KB
+[23:51:49]   Random Forest trees=10,depth=None    f1m=0.886 lat(np,1t)=1.26ms size=9645KB
+[23:52:14]   Random Forest trees=10,depth=20      f1m=0.826 lat(np,1t)=1.26ms size=6402KB
+[23:52:39]   Random Forest trees=10,depth=12      f1m=0.672 lat(np,1t)=1.24ms size=1875KB
+[23:53:07]   Random Forest trees=25,depth=None    f1m=0.910 lat(np,1t)=1.88ms size=22907KB
+[23:53:35]   Random Forest trees=25,depth=20      f1m=0.848 lat(np,1t)=1.88ms size=15404KB
+[23:54:03]   Random Forest trees=25,depth=12      f1m=0.687 lat(np,1t)=1.99ms size=4009KB
+[23:54:36]   Random Forest trees=50,depth=None    f1m=0.913 lat(np,1t)=2.93ms size=45264KB
+[23:55:09]   Random Forest trees=50,depth=20      f1m=0.848 lat(np,1t)=2.90ms size=30210KB
+[23:55:40]   Random Forest trees=50,depth=12      f1m=0.692 lat(np,1t)=2.90ms size=7550KB
+[23:56:31]   Random Forest trees=100,depth=None   f1m=0.913 lat(np,1t)=5.01ms size=89904KB
+[23:57:20]   Random Forest trees=100,depth=20     f1m=0.851 lat(np,1t)=5.01ms size=59422KB
+[23:58:07]   Random Forest trees=100,depth=12     f1m=0.696 lat(np,1t)=4.95ms size=14777KB
+[23:59:26]   Random Forest trees=200,depth=None   f1m=0.915 lat(np,1t)=9.16ms size=179831KB
+[00:00:44]   Random Forest trees=200,depth=20     f1m=0.854 lat(np,1t)=9.07ms size=117621KB
+[00:01:55]   Random Forest trees=200,depth=12     f1m=0.695 lat(np,1t)=9.05ms size=28774KB
+[00:02:04]   XGBoost       trees=10,depth=3       f1m=0.456 lat(np,1t)=1.22ms size=50KB
+[00:02:12]   XGBoost       trees=10,depth=4       f1m=0.510 lat(np,1t)=1.16ms size=64KB
+[00:02:21]   XGBoost       trees=10,depth=6       f1m=0.556 lat(np,1t)=1.15ms size=139KB
+[00:02:30]   XGBoost       trees=10,depth=8       f1m=0.621 lat(np,1t)=1.18ms size=330KB
+[00:02:39]   XGBoost       trees=25,depth=3       f1m=0.525 lat(np,1t)=1.17ms size=101KB
+[00:02:48]   XGBoost       trees=25,depth=4       f1m=0.538 lat(np,1t)=1.16ms size=136KB
+[00:02:58]   XGBoost       trees=25,depth=6       f1m=0.586 lat(np,1t)=1.16ms size=321KB
+[00:03:10]   XGBoost       trees=25,depth=8       f1m=0.656 lat(np,1t)=1.18ms size=803KB
+[00:03:20]   XGBoost       trees=50,depth=3       f1m=0.538 lat(np,1t)=1.23ms size=186KB
+[00:03:30]   XGBoost       trees=50,depth=4       f1m=0.559 lat(np,1t)=1.18ms size=255KB
+[00:03:43]   XGBoost       trees=50,depth=6       f1m=0.620 lat(np,1t)=1.37ms size=600KB
+[00:03:58]   XGBoost       trees=50,depth=8       f1m=0.701 lat(np,1t)=1.20ms size=1468KB
+[00:04:09]   XGBoost       trees=100,depth=3      f1m=0.558 lat(np,1t)=1.18ms size=356KB
+[00:04:21]   XGBoost       trees=100,depth=4      f1m=0.588 lat(np,1t)=1.35ms size=490KB
+[00:04:35]   XGBoost       trees=100,depth=6      f1m=0.667 lat(np,1t)=1.20ms size=1120KB
+[00:04:58]   XGBoost       trees=100,depth=8      f1m=0.756 lat(np,1t)=1.24ms size=2518KB
+[00:05:11]   XGBoost       trees=200,depth=3      f1m=0.590 lat(np,1t)=1.26ms size=694KB
+[00:05:26]   XGBoost       trees=200,depth=4      f1m=0.634 lat(np,1t)=1.23ms size=967KB
+[00:05:48]   XGBoost       trees=200,depth=6      f1m=0.738 lat(np,1t)=1.39ms size=2165KB
+[00:06:20]   XGBoost       trees=200,depth=8      f1m=0.829 lat(np,1t)=1.32ms size=4544KB
+[00:06:20] === split 2/5 ===
+[00:06:28]   Decision Tree depth=4                f1m=0.418 lat(np,1t)=0.59ms size=10KB
+[00:06:36]   Decision Tree depth=6                f1m=0.516 lat(np,1t)=0.59ms size=18KB
+[00:06:46]   Decision Tree depth=8                f1m=0.551 lat(np,1t)=0.61ms size=42KB
+[00:06:57]   Decision Tree depth=10               f1m=0.566 lat(np,1t)=0.60ms size=86KB
+[00:07:09]   Decision Tree depth=12               f1m=0.619 lat(np,1t)=0.59ms size=156KB
+[00:07:21]   Decision Tree depth=16               f1m=0.697 lat(np,1t)=0.60ms size=374KB
+[00:07:34]   Decision Tree depth=20               f1m=0.747 lat(np,1t)=0.60ms size=620KB
+[00:07:49]   Decision Tree depth=None             f1m=0.836 lat(np,1t)=0.60ms size=1120KB
+[00:08:14]   Random Forest trees=5,depth=None     f1m=0.863 lat(np,1t)=1.05ms size=4950KB
+[00:08:38]   Random Forest trees=5,depth=20       f1m=0.775 lat(np,1t)=1.03ms size=3242KB
+[00:09:02]   Random Forest trees=5,depth=12       f1m=0.636 lat(np,1t)=1.07ms size=1153KB
+[00:09:27]   Random Forest trees=10,depth=None    f1m=0.884 lat(np,1t)=1.29ms size=9461KB
+[00:09:52]   Random Forest trees=10,depth=20      f1m=0.812 lat(np,1t)=1.25ms size=6109KB
+[00:10:17]   Random Forest trees=10,depth=12      f1m=0.657 lat(np,1t)=1.24ms size=1903KB
+[00:10:45]   Random Forest trees=25,depth=None    f1m=0.901 lat(np,1t)=1.97ms size=22907KB
+[00:11:14]   Random Forest trees=25,depth=20      f1m=0.830 lat(np,1t)=1.86ms size=15043KB
+[00:11:41]   Random Forest trees=25,depth=12      f1m=0.665 lat(np,1t)=1.86ms size=3908KB
+[00:12:14]   Random Forest trees=50,depth=None    f1m=0.910 lat(np,1t)=2.90ms size=45403KB
+[00:12:48]   Random Forest trees=50,depth=20      f1m=0.844 lat(np,1t)=3.04ms size=30116KB
+[00:13:19]   Random Forest trees=50,depth=12      f1m=0.674 lat(np,1t)=2.89ms size=7549KB
+[00:14:11]   Random Forest trees=100,depth=None   f1m=0.912 lat(np,1t)=4.98ms size=90054KB
+[00:14:59]   Random Forest trees=100,depth=20     f1m=0.845 lat(np,1t)=5.00ms size=58757KB
+[00:15:46]   Random Forest trees=100,depth=12     f1m=0.678 lat(np,1t)=4.93ms size=14464KB
+[00:17:12]   Random Forest trees=200,depth=None   f1m=0.914 lat(np,1t)=10.66ms size=178984KB
+[00:18:45]   Random Forest trees=200,depth=20     f1m=0.847 lat(np,1t)=10.29ms size=116930KB
+[00:20:10]   Random Forest trees=200,depth=12     f1m=0.678 lat(np,1t)=9.76ms size=28349KB
+[00:20:19]   XGBoost       trees=10,depth=3       f1m=0.485 lat(np,1t)=1.23ms size=50KB
+[00:20:28]   XGBoost       trees=10,depth=4       f1m=0.498 lat(np,1t)=1.25ms size=65KB
+[00:20:37]   XGBoost       trees=10,depth=6       f1m=0.541 lat(np,1t)=1.24ms size=141KB
+[00:20:48]   XGBoost       trees=10,depth=8       f1m=0.607 lat(np,1t)=1.32ms size=326KB
+[00:20:57]   XGBoost       trees=25,depth=3       f1m=0.508 lat(np,1t)=1.24ms size=101KB
+[00:21:07]   XGBoost       trees=25,depth=4       f1m=0.521 lat(np,1t)=1.30ms size=137KB
+[00:21:18]   XGBoost       trees=25,depth=6       f1m=0.582 lat(np,1t)=1.22ms size=324KB
+[00:21:30]   XGBoost       trees=25,depth=8       f1m=0.645 lat(np,1t)=1.29ms size=795KB
+[00:21:41]   XGBoost       trees=50,depth=3       f1m=0.522 lat(np,1t)=1.27ms size=186KB
+[00:21:51]   XGBoost       trees=50,depth=4       f1m=0.555 lat(np,1t)=1.24ms size=258KB
+[00:22:03]   XGBoost       trees=50,depth=6       f1m=0.623 lat(np,1t)=1.28ms size=599KB
+[00:22:20]   XGBoost       trees=50,depth=8       f1m=0.693 lat(np,1t)=1.27ms size=1440KB
+[00:22:32]   XGBoost       trees=100,depth=3      f1m=0.544 lat(np,1t)=1.29ms size=356KB
+[00:22:44]   XGBoost       trees=100,depth=4      f1m=0.584 lat(np,1t)=1.27ms size=492KB
+[00:23:01]   XGBoost       trees=100,depth=6      f1m=0.667 lat(np,1t)=1.33ms size=1108KB
+[00:23:23]   XGBoost       trees=100,depth=8      f1m=0.750 lat(np,1t)=1.30ms size=2467KB
+[00:23:37]   XGBoost       trees=200,depth=3      f1m=0.576 lat(np,1t)=1.34ms size=693KB
+[00:23:54]   XGBoost       trees=200,depth=4      f1m=0.625 lat(np,1t)=1.33ms size=968KB
+[00:24:17]   XGBoost       trees=200,depth=6      f1m=0.736 lat(np,1t)=1.38ms size=2163KB
+[00:24:51]   XGBoost       trees=200,depth=8      f1m=0.827 lat(np,1t)=1.50ms size=4497KB
+[00:24:51] === split 3/5 ===
+[00:24:59]   Decision Tree depth=4                f1m=0.409 lat(np,1t)=0.61ms size=10KB
+[00:25:08]   Decision Tree depth=6                f1m=0.503 lat(np,1t)=0.63ms size=18KB
+[00:25:19]   Decision Tree depth=8                f1m=0.546 lat(np,1t)=0.62ms size=40KB
+[00:25:30]   Decision Tree depth=10               f1m=0.571 lat(np,1t)=0.62ms size=86KB
+[00:25:42]   Decision Tree depth=12               f1m=0.614 lat(np,1t)=0.62ms size=155KB
+[00:25:55]   Decision Tree depth=16               f1m=0.689 lat(np,1t)=0.62ms size=370KB
+[00:26:10]   Decision Tree depth=20               f1m=0.729 lat(np,1t)=0.62ms size=609KB
+[00:26:25]   Decision Tree depth=None             f1m=0.828 lat(np,1t)=0.63ms size=1181KB
+[00:26:50]   Random Forest trees=5,depth=None     f1m=0.867 lat(np,1t)=1.09ms size=4948KB
+[00:27:14]   Random Forest trees=5,depth=20       f1m=0.800 lat(np,1t)=1.08ms size=3443KB
+[00:27:39]   Random Forest trees=5,depth=12       f1m=0.656 lat(np,1t)=1.06ms size=1242KB
+[00:28:04]   Random Forest trees=10,depth=None    f1m=0.889 lat(np,1t)=1.32ms size=9518KB
+[00:28:30]   Random Forest trees=10,depth=20      f1m=0.820 lat(np,1t)=1.28ms size=6331KB
+[00:28:55]   Random Forest trees=10,depth=12      f1m=0.661 lat(np,1t)=1.32ms size=1934KB
+[00:29:24]   Random Forest trees=25,depth=None    f1m=0.904 lat(np,1t)=1.96ms size=22889KB
+[00:29:53]   Random Forest trees=25,depth=20      f1m=0.839 lat(np,1t)=1.97ms size=14911KB
+[00:30:21]   Random Forest trees=25,depth=12      f1m=0.673 lat(np,1t)=1.98ms size=4032KB
+[00:30:55]   Random Forest trees=50,depth=None    f1m=0.911 lat(np,1t)=3.05ms size=45117KB
+[00:31:29]   Random Forest trees=50,depth=20      f1m=0.843 lat(np,1t)=3.08ms size=29454KB
+[00:32:01]   Random Forest trees=50,depth=12      f1m=0.678 lat(np,1t)=3.03ms size=7487KB
+[00:32:52]   Random Forest trees=100,depth=None   f1m=0.915 lat(np,1t)=5.03ms size=89744KB
+[00:33:42]   Random Forest trees=100,depth=20     f1m=0.848 lat(np,1t)=4.97ms size=58802KB
+[00:34:28]   Random Forest trees=100,depth=12     f1m=0.679 lat(np,1t)=4.93ms size=14492KB
+[00:35:49]   Random Forest trees=200,depth=None   f1m=0.917 lat(np,1t)=9.12ms size=179163KB
+[00:37:08]   Random Forest trees=200,depth=20     f1m=0.853 lat(np,1t)=9.17ms size=117405KB
+[00:38:19]   Random Forest trees=200,depth=12     f1m=0.682 lat(np,1t)=9.04ms size=28584KB
+[00:38:27]   XGBoost       trees=10,depth=3       f1m=0.449 lat(np,1t)=1.16ms size=50KB
+[00:38:36]   XGBoost       trees=10,depth=4       f1m=0.493 lat(np,1t)=1.20ms size=65KB
+[00:38:44]   XGBoost       trees=10,depth=6       f1m=0.546 lat(np,1t)=1.17ms size=140KB
+[00:38:54]   XGBoost       trees=10,depth=8       f1m=0.606 lat(np,1t)=1.16ms size=327KB
+[00:39:03]   XGBoost       trees=25,depth=3       f1m=0.516 lat(np,1t)=1.20ms size=101KB
+[00:39:12]   XGBoost       trees=25,depth=4       f1m=0.528 lat(np,1t)=1.27ms size=137KB
+[00:39:22]   XGBoost       trees=25,depth=6       f1m=0.585 lat(np,1t)=1.18ms size=324KB
+[00:39:34]   XGBoost       trees=25,depth=8       f1m=0.648 lat(np,1t)=1.18ms size=796KB
+[00:39:44]   XGBoost       trees=50,depth=3       f1m=0.526 lat(np,1t)=1.18ms size=186KB
+[00:39:54]   XGBoost       trees=50,depth=4       f1m=0.550 lat(np,1t)=1.18ms size=257KB
+[00:40:05]   XGBoost       trees=50,depth=6       f1m=0.620 lat(np,1t)=1.20ms size=594KB
+[00:40:22]   XGBoost       trees=50,depth=8       f1m=0.690 lat(np,1t)=1.21ms size=1426KB
+[00:40:33]   XGBoost       trees=100,depth=3      f1m=0.549 lat(np,1t)=1.22ms size=356KB
+[00:40:44]   XGBoost       trees=100,depth=4      f1m=0.580 lat(np,1t)=1.21ms size=494KB
+[00:40:59]   XGBoost       trees=100,depth=6      f1m=0.668 lat(np,1t)=1.24ms size=1098KB
+[00:41:21]   XGBoost       trees=100,depth=8      f1m=0.755 lat(np,1t)=1.23ms size=2427KB
+[00:41:34]   XGBoost       trees=200,depth=3      f1m=0.579 lat(np,1t)=1.24ms size=694KB
+[00:41:49]   XGBoost       trees=200,depth=4      f1m=0.634 lat(np,1t)=1.25ms size=967KB
+[00:42:11]   XGBoost       trees=200,depth=6      f1m=0.745 lat(np,1t)=1.30ms size=2149KB
+[00:42:42]   XGBoost       trees=200,depth=8      f1m=0.829 lat(np,1t)=1.31ms size=4478KB
+[00:42:42] === split 4/5 ===
+[00:42:50]   Decision Tree depth=4                f1m=0.441 lat(np,1t)=0.58ms size=10KB
+[00:42:58]   Decision Tree depth=6                f1m=0.482 lat(np,1t)=0.59ms size=19KB
+[00:43:08]   Decision Tree depth=8                f1m=0.514 lat(np,1t)=0.59ms size=44KB
+[00:43:19]   Decision Tree depth=10               f1m=0.568 lat(np,1t)=0.59ms size=93KB
+[00:43:30]   Decision Tree depth=12               f1m=0.606 lat(np,1t)=0.59ms size=158KB
+[00:43:43]   Decision Tree depth=16               f1m=0.679 lat(np,1t)=0.59ms size=350KB
+[00:43:56]   Decision Tree depth=20               f1m=0.733 lat(np,1t)=0.59ms size=598KB
+[00:44:11]   Decision Tree depth=None             f1m=0.830 lat(np,1t)=0.63ms size=1185KB
+[00:44:36]   Random Forest trees=5,depth=None     f1m=0.865 lat(np,1t)=1.20ms size=4958KB
+[00:45:02]   Random Forest trees=5,depth=20       f1m=0.805 lat(np,1t)=1.23ms size=3561KB
+[00:45:28]   Random Forest trees=5,depth=12       f1m=0.641 lat(np,1t)=1.16ms size=1186KB
+[00:45:54]   Random Forest trees=10,depth=None    f1m=0.892 lat(np,1t)=1.40ms size=9452KB
+[00:46:21]   Random Forest trees=10,depth=20      f1m=0.831 lat(np,1t)=1.38ms size=6622KB
+[00:46:47]   Random Forest trees=10,depth=12      f1m=0.661 lat(np,1t)=1.65ms size=1835KB
+[00:47:17]   Random Forest trees=25,depth=None    f1m=0.904 lat(np,1t)=2.20ms size=22901KB
+[00:47:46]   Random Forest trees=25,depth=20      f1m=0.845 lat(np,1t)=1.94ms size=15508KB
+[00:48:13]   Random Forest trees=25,depth=12      f1m=0.681 lat(np,1t)=1.91ms size=4131KB
+[00:48:47]   Random Forest trees=50,depth=None    f1m=0.914 lat(np,1t)=2.94ms size=45324KB
+[00:49:20]   Random Forest trees=50,depth=20      f1m=0.853 lat(np,1t)=2.99ms size=30400KB
+[00:49:52]   Random Forest trees=50,depth=12      f1m=0.687 lat(np,1t)=2.95ms size=7787KB
+[00:50:44]   Random Forest trees=100,depth=None   f1m=0.914 lat(np,1t)=5.10ms size=90178KB
+[00:51:35]   Random Forest trees=100,depth=20     f1m=0.854 lat(np,1t)=5.10ms size=59770KB
+[00:52:26]   Random Forest trees=100,depth=12     f1m=0.691 lat(np,1t)=5.46ms size=14734KB
+[00:53:51]   Random Forest trees=200,depth=None   f1m=0.915 lat(np,1t)=9.32ms size=179179KB
+[00:55:09]   Random Forest trees=200,depth=20     f1m=0.853 lat(np,1t)=9.35ms size=118485KB
+[00:56:22]   Random Forest trees=200,depth=12     f1m=0.688 lat(np,1t)=9.78ms size=28676KB
+[00:56:31]   XGBoost       trees=10,depth=3       f1m=0.451 lat(np,1t)=1.21ms size=50KB
+[00:56:40]   XGBoost       trees=10,depth=4       f1m=0.508 lat(np,1t)=1.32ms size=65KB
+[00:56:50]   XGBoost       trees=10,depth=6       f1m=0.551 lat(np,1t)=1.32ms size=140KB
+[00:57:01]   XGBoost       trees=10,depth=8       f1m=0.608 lat(np,1t)=1.32ms size=327KB
+[00:57:11]   XGBoost       trees=25,depth=3       f1m=0.522 lat(np,1t)=1.34ms size=101KB
+[00:57:21]   XGBoost       trees=25,depth=4       f1m=0.528 lat(np,1t)=1.32ms size=137KB
+[00:57:32]   XGBoost       trees=25,depth=6       f1m=0.591 lat(np,1t)=1.33ms size=326KB
+[00:57:48]   XGBoost       trees=25,depth=8       f1m=0.649 lat(np,1t)=1.64ms size=812KB
+[00:57:58]   XGBoost       trees=50,depth=3       f1m=0.535 lat(np,1t)=1.23ms size=186KB
+[00:58:08]   XGBoost       trees=50,depth=4       f1m=0.555 lat(np,1t)=1.23ms size=256KB
+[00:58:20]   XGBoost       trees=50,depth=6       f1m=0.629 lat(np,1t)=1.26ms size=605KB
+[00:58:36]   XGBoost       trees=50,depth=8       f1m=0.699 lat(np,1t)=1.25ms size=1476KB
+[00:58:47]   XGBoost       trees=100,depth=3      f1m=0.556 lat(np,1t)=1.24ms size=356KB
+[00:58:58]   XGBoost       trees=100,depth=4      f1m=0.589 lat(np,1t)=1.25ms size=491KB
+[00:59:13]   XGBoost       trees=100,depth=6      f1m=0.672 lat(np,1t)=1.26ms size=1116KB
+[00:59:35]   XGBoost       trees=100,depth=8      f1m=0.759 lat(np,1t)=1.28ms size=2554KB
+[00:59:49]   XGBoost       trees=200,depth=3      f1m=0.590 lat(np,1t)=1.32ms size=694KB
+[01:00:04]   XGBoost       trees=200,depth=4      f1m=0.633 lat(np,1t)=1.29ms size=964KB
+[01:00:26]   XGBoost       trees=200,depth=6      f1m=0.741 lat(np,1t)=1.36ms size=2159KB
+[01:00:59]   XGBoost       trees=200,depth=8      f1m=0.838 lat(np,1t)=1.34ms size=4637KB
+[01:00:59] === split 5/5 ===
+[01:01:07]   Decision Tree depth=4                f1m=0.414 lat(np,1t)=0.62ms size=10KB
+[01:01:16]   Decision Tree depth=6                f1m=0.524 lat(np,1t)=0.59ms size=18KB
+[01:01:26]   Decision Tree depth=8                f1m=0.531 lat(np,1t)=0.59ms size=40KB
+[01:01:37]   Decision Tree depth=10               f1m=0.555 lat(np,1t)=0.61ms size=82KB
+[01:01:49]   Decision Tree depth=12               f1m=0.597 lat(np,1t)=0.61ms size=149KB
+[01:02:01]   Decision Tree depth=16               f1m=0.679 lat(np,1t)=0.60ms size=361KB
+[01:02:15]   Decision Tree depth=20               f1m=0.726 lat(np,1t)=0.59ms size=612KB
+[01:02:30]   Decision Tree depth=None             f1m=0.824 lat(np,1t)=0.62ms size=1197KB
+[01:02:55]   Random Forest trees=5,depth=None     f1m=0.862 lat(np,1t)=1.07ms size=5078KB
+[01:03:19]   Random Forest trees=5,depth=20       f1m=0.792 lat(np,1t)=1.07ms size=3432KB
+[01:03:45]   Random Forest trees=5,depth=12       f1m=0.627 lat(np,1t)=1.33ms size=1158KB
+[01:04:11]   Random Forest trees=10,depth=None    f1m=0.886 lat(np,1t)=1.27ms size=9512KB
+[01:04:37]   Random Forest trees=10,depth=20      f1m=0.824 lat(np,1t)=1.25ms size=6488KB
+[01:05:02]   Random Forest trees=10,depth=12      f1m=0.652 lat(np,1t)=1.28ms size=1839KB
+[01:05:32]   Random Forest trees=25,depth=None    f1m=0.901 lat(np,1t)=2.22ms size=22854KB
+[01:06:01]   Random Forest trees=25,depth=20      f1m=0.832 lat(np,1t)=2.17ms size=15237KB
+[01:06:30]   Random Forest trees=25,depth=12      f1m=0.669 lat(np,1t)=2.09ms size=3962KB
+[01:07:09]   Random Forest trees=50,depth=None    f1m=0.908 lat(np,1t)=3.88ms size=45134KB
+[01:07:54]   Random Forest trees=50,depth=20      f1m=0.839 lat(np,1t)=3.48ms size=29773KB
+[01:08:28]   Random Forest trees=50,depth=12      f1m=0.678 lat(np,1t)=2.92ms size=7533KB
+[01:09:21]   Random Forest trees=100,depth=None   f1m=0.911 lat(np,1t)=5.06ms size=89834KB
+[01:10:13]   Random Forest trees=100,depth=20     f1m=0.844 lat(np,1t)=5.11ms size=58539KB
+[01:11:04]   Random Forest trees=100,depth=12     f1m=0.683 lat(np,1t)=5.74ms size=14534KB
+[01:12:40]   Random Forest trees=200,depth=None   f1m=0.910 lat(np,1t)=10.72ms size=178815KB
+[01:14:11]   Random Forest trees=200,depth=20     f1m=0.844 lat(np,1t)=9.25ms size=116157KB
+[01:15:23]   Random Forest trees=200,depth=12     f1m=0.686 lat(np,1t)=9.25ms size=28201KB
+[01:15:32]   XGBoost       trees=10,depth=3       f1m=0.450 lat(np,1t)=1.48ms size=50KB
+[01:15:41]   XGBoost       trees=10,depth=4       f1m=0.493 lat(np,1t)=1.24ms size=65KB
+[01:15:50]   XGBoost       trees=10,depth=6       f1m=0.538 lat(np,1t)=1.22ms size=140KB
+[01:16:00]   XGBoost       trees=10,depth=8       f1m=0.605 lat(np,1t)=1.21ms size=324KB
+[01:16:09]   XGBoost       trees=25,depth=3       f1m=0.516 lat(np,1t)=1.22ms size=101KB
+[01:16:18]   XGBoost       trees=25,depth=4       f1m=0.533 lat(np,1t)=1.21ms size=137KB
+[01:16:29]   XGBoost       trees=25,depth=6       f1m=0.585 lat(np,1t)=1.24ms size=327KB
+[01:16:42]   XGBoost       trees=25,depth=8       f1m=0.652 lat(np,1t)=1.25ms size=804KB
+[01:16:51]   XGBoost       trees=50,depth=3       f1m=0.526 lat(np,1t)=1.25ms size=187KB
+[01:17:02]   XGBoost       trees=50,depth=4       f1m=0.553 lat(np,1t)=1.28ms size=258KB
+[01:17:13]   XGBoost       trees=50,depth=6       f1m=0.623 lat(np,1t)=1.24ms size=609KB
+[01:17:29]   XGBoost       trees=50,depth=8       f1m=0.695 lat(np,1t)=1.26ms size=1439KB
+[01:17:40]   XGBoost       trees=100,depth=3      f1m=0.551 lat(np,1t)=1.24ms size=356KB
+[01:17:53]   XGBoost       trees=100,depth=4      f1m=0.582 lat(np,1t)=1.25ms size=494KB
+[01:18:09]   XGBoost       trees=100,depth=6      f1m=0.671 lat(np,1t)=1.28ms size=1131KB
+[01:18:30]   XGBoost       trees=100,depth=8      f1m=0.756 lat(np,1t)=1.28ms size=2469KB
+[01:18:44]   XGBoost       trees=200,depth=3      f1m=0.577 lat(np,1t)=1.36ms size=694KB
+[01:19:00]   XGBoost       trees=200,depth=4      f1m=0.629 lat(np,1t)=1.29ms size=970KB
+[01:19:21]   XGBoost       trees=200,depth=6      f1m=0.747 lat(np,1t)=1.42ms size=2182KB
+[01:19:54]   XGBoost       trees=200,depth=8      f1m=0.834 lat(np,1t)=1.39ms size=4554KB
+[01:19:54] Done.

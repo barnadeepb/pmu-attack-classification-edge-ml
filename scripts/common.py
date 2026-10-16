@@ -48,6 +48,22 @@ from xgboost import XGBClassifier
 
 warnings.filterwarnings("ignore", message="X does not have valid feature names")
 
+# sklearn 1.9's RandomForestClassifier.predict() emits a UserWarning about
+# `sklearn.utils.parallel.delayed`/`Parallel` pairing from inside its joblib
+# threading workers, once per tree per predict() call. Normal warnings
+# filters (including PYTHONWARNINGS=ignore and filterwarnings()) do not
+# suppress it -- it bypasses filter matching -- so during the df-native
+# latency mode (n_jobs=-1, 1000 samples x 5 splits) it was writing >100MB of
+# log per model. Patching warnings.warn() directly is the only thing that
+# stops it; everything else (ConvergenceWarning, FutureWarning, etc.) still
+# passes through unchanged.
+_orig_warn = warnings.warn
+def _filtered_warn(message, category=UserWarning, *args, **kwargs):
+    if "sklearn.utils.parallel.delayed" in str(message):
+        return None
+    return _orig_warn(message, category, *args, **kwargs)
+warnings.warn = _filtered_warn
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = ROOT / "data" / "pmu_dataset.csv"
 

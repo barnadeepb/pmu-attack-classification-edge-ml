@@ -1,0 +1,136 @@
+model,split,group,n_features,importance
+Decision Tree,0,Voltage phase angle (VH),24,0.12847109725207848
+Decision Tree,0,Voltage magnitude (V),24,0.42119712783735824
+Decision Tree,0,Current phase angle (IH),24,0.17278869452979953
+Decision Tree,0,Current magnitude (I),24,0.30599443433903384
+Decision Tree,0,"Frequency (F, dF/dt)",8,0.042852546285931936
+Decision Tree,0,Impedance magnitude (Z),4,0.1427797966979801
+Decision Tree,0,Impedance angle (ZH),4,0.27180098840828465
+Decision Tree,0,Status flag (S),4,0.0003843519368527855
+Decision Tree,0,Log flags (control panel / relay / Snort),12,0.0005852037346898431
+Random Forest,0,Voltage phase angle (VH),24,0.09706284510623849
+Random Forest,0,Voltage magnitude (V),24,0.48020856689945707
+Random Forest,0,Current phase angle (IH),24,0.11731206253289839
+Random Forest,0,Current magnitude (I),24,0.3633153675278318
+Random Forest,0,"Frequency (F, dF/dt)",8,0.019182866440627683
+Random Forest,0,Impedance magnitude (Z),4,-0.00021715972031658795
+Random Forest,0,Impedance angle (ZH),4,0.16759399378682274
+Random Forest,0,Status flag (S),4,0.0004320876801354734
+Random Forest,0,Log flags (control panel / relay / Snort),12,0.000452540596816912
+XGBoost,0,Voltage phase angle (VH),24,0.0507491864064511
+XGBoost,0,Voltage magnitude (V),24,0.3066245293893728
+XGBoost,0,Current phase angle (IH),24,0.05581647809693454
+XGBoost,0,Current magnitude (I),24,0.11000229056989275
+XGBoost,0,"Frequency (F, dF/dt)",8,0.028065883110948115
+XGBoost,0,Impedance magnitude (Z),4,0.00394694953804046
+XGBoost,0,Impedance angle (ZH),4,0.11065877437563891
+XGBoost,0,Status flag (S),4,-0.00012039029708166282
+XGBoost,0,Log flags (control panel / relay / Snort),12,0.0007041534155614778
+Decision Tree,1,Voltage phase angle (VH),24,0.13553475287343783
+Decision Tree,1,Voltage magnitude (V),24,0.4413735527291731
+Decision Tree,1,Current phase angle (IH),24,0.17877586861514128
+Decision Tree,1,Current magnitude (I),24,0.36859918992228496
+Decision Tree,1,"Frequency (F, dF/dt)",8,0.05368369200170823
+Decision Tree,1,Impedance magnitude (Z),4,0.12418854487671753
+Decision Tree,1,Impedance angle (ZH),4,0.2869469769980196
+Decision Tree,1,Status flag (S),4,0.0013458035502758408
+Decision Tree,1,Log flags (control panel / relay / Snort),12,0.00012787873032382713
+Random Forest,1,Voltage phase angle (VH),24,0.09793742547510527
+Random Forest,1,Voltage magnitude (V),24,0.4716950959815742
+Random Forest,1,Current phase angle (IH),24,0.10183853113930723
+Random Forest,1,Current magnitude (I),24,0.3709546661679757
+Random Forest,1,"Frequency (F, dF/dt)",8,0.02410039256218884
+Random Forest,1,Impedance magnitude (Z),4,0.0030269316526761645
+Random Forest,1,Impedance angle (ZH),4,0.155128317162596
+Random Forest,1,Status flag (S),4,0.0004350687368746738
+Random Forest,1,Log flags (control panel / relay / Snort),12,0.001259651734899873
+XGBoost,1,Voltage phase angle (VH),24,0.04269510896636378
+XGBoost,1,Voltage magnitude (V),24,0.29895117239196023
+XGBoost,1,Current phase angle (IH),24,0.06363348102313937
+XGBoost,1,Current magnitude (I),24,0.11498945927844421
+XGBoost,1,"Frequency (F, dF/dt)",8,0.025788508406025017
+XGBoost,1,Impedance magnitude (Z),4,0.007969295544962804
+XGBoost,1,Impedance angle (ZH),4,0.10748035971882923
+XGBoost,1,Status flag (S),4,0.0004263382300202882
+XGBoost,1,Log flags (control panel / relay / Snort),12,0.00033969837071701203
+Decision Tree,2,Voltage phase angle (VH),24,0.12780553383748158
+Decision Tree,2,Voltage magnitude (V),24,0.4404168777785588
+Decision Tree,2,Current phase angle (IH),24,0.1755125763562472
+Decision Tree,2,Current magnitude (I),24,0.33132045268617855
+Decision Tree,2,"Frequency (F, dF/dt)",8,0.0423768403325786
+Decision Tree,2,Impedance magnitude (Z),4,0.09005340950225016
+Decision Tree,2,Impedance angle (ZH),4,0.291825439214966
+Decision Tree,2,Status flag (S),4,0.0004944240611224338
+Decision Tree,2,Log flags (control panel / relay / Snort),12,0.0009505013843073377
+Random Forest,2,Voltage phase angle (VH),24,0.09657229132080336
+Random Forest,2,Voltage magnitude (V),24,0.47430998047521983
+Random Forest,2,Current phase angle (IH),24,0.11630386807508793
+Random Forest,2,Current magnitude (I),24,0.35454380329582147
+Random Forest,2,"Frequency (F, dF/dt)",8,0.021955099794400208
+Random Forest,2,Impedance magnitude (Z),4,0.0015506886015429118
+Random Forest,2,Impedance angle (ZH),4,0.15791386819392328
+Random Forest,2,Status flag (S),4,0.0003823790667176752
+Random Forest,2,Log flags (control panel / relay / Snort),12,0.001213653471801801
+XGBoost,2,Voltage phase angle (VH),24,0.055700839062014916
+XGBoost,2,Voltage magnitude (V),24,0.3041546811338416
+XGBoost,2,Current phase angle (IH),24,0.07111227889255729
+XGBoost,2,Current magnitude (I),24,0.11322806563489503
+XGBoost,2,"Frequency (F, dF/dt)",8,0.033732122158959044
+XGBoost,2,Impedance magnitude (Z),4,0.012429645277215537
+XGBoost,2,Impedance angle (ZH),4,0.12228044000604743
+XGBoost,2,Status flag (S),4,0.0013127620326032208
+XGBoost,2,Log flags (control panel / relay / Snort),12,0.0006560113232402983
+Decision Tree,3,Voltage phase angle (VH),24,0.1433884395759705
+Decision Tree,3,Voltage magnitude (V),24,0.4252029834727218
+Decision Tree,3,Current phase angle (IH),24,0.1829628189644343
+Decision Tree,3,Current magnitude (I),24,0.2959114706085685
+Decision Tree,3,"Frequency (F, dF/dt)",8,0.042259834986936896
+Decision Tree,3,Impedance magnitude (Z),4,0.08106852710684649
+Decision Tree,3,Impedance angle (ZH),4,0.2767165461735484
+Decision Tree,3,Status flag (S),4,0.0003852594168968955
+Decision Tree,3,Log flags (control panel / relay / Snort),12,0.002390068217443919
+Random Forest,3,Voltage phase angle (VH),24,0.09748977131541041
+Random Forest,3,Voltage magnitude (V),24,0.46787450797519653
+Random Forest,3,Current phase angle (IH),24,0.11340333913554072
+Random Forest,3,Current magnitude (I),24,0.36757973977471464
+Random Forest,3,"Frequency (F, dF/dt)",8,0.017055488228264488
+Random Forest,3,Impedance magnitude (Z),4,0.001455747702634606
+Random Forest,3,Impedance angle (ZH),4,0.16419765163113786
+Random Forest,3,Status flag (S),4,0.00012664933638839582
+Random Forest,3,Log flags (control panel / relay / Snort),12,-0.00016993816226396063
+XGBoost,3,Voltage phase angle (VH),24,0.048765068150325996
+XGBoost,3,Voltage magnitude (V),24,0.3057283784481823
+XGBoost,3,Current phase angle (IH),24,0.05990327904117173
+XGBoost,3,Current magnitude (I),24,0.11103996615881646
+XGBoost,3,"Frequency (F, dF/dt)",8,0.02989835596533445
+XGBoost,3,Impedance magnitude (Z),4,0.005807974907039141
+XGBoost,3,Impedance angle (ZH),4,0.12514286365621122
+XGBoost,3,Status flag (S),4,0.002561439582250117
+XGBoost,3,Log flags (control panel / relay / Snort),12,0.000363474207831264
+Decision Tree,4,Voltage phase angle (VH),24,0.1361241650416585
+Decision Tree,4,Voltage magnitude (V),24,0.4259224590065888
+Decision Tree,4,Current phase angle (IH),24,0.185879878936932
+Decision Tree,4,Current magnitude (I),24,0.32372842512001676
+Decision Tree,4,"Frequency (F, dF/dt)",8,0.05519390514555204
+Decision Tree,4,Impedance magnitude (Z),4,0.08249602233853755
+Decision Tree,4,Impedance angle (ZH),4,0.28228008370783336
+Decision Tree,4,Status flag (S),4,0.0003412922365462571
+Decision Tree,4,Log flags (control panel / relay / Snort),12,-2.518501912921837e-05
+Random Forest,4,Voltage phase angle (VH),24,0.10052828359988186
+Random Forest,4,Voltage magnitude (V),24,0.4719098900537944
+Random Forest,4,Current phase angle (IH),24,0.11097348508025313
+Random Forest,4,Current magnitude (I),24,0.3727821488595917
+Random Forest,4,"Frequency (F, dF/dt)",8,0.026063665947037278
+Random Forest,4,Impedance magnitude (Z),4,1.3327642244968333e-05
+Random Forest,4,Impedance angle (ZH),4,0.15263340342772333
+Random Forest,4,Status flag (S),4,-0.00017436166778705964
+Random Forest,4,Log flags (control panel / relay / Snort),12,-0.0002091488552690146
+XGBoost,4,Voltage phase angle (VH),24,0.046691478154957
+XGBoost,4,Voltage magnitude (V),24,0.30262048992656515
+XGBoost,4,Current phase angle (IH),24,0.06121599386849615
+XGBoost,4,Current magnitude (I),24,0.10774097398957871
+XGBoost,4,"Frequency (F, dF/dt)",8,0.03912193320042179
+XGBoost,4,Impedance magnitude (Z),4,0.011927795861820837
+XGBoost,4,Impedance angle (ZH),4,0.11615767760497923
+XGBoost,4,Status flag (S),4,0.0002353325109180441
+XGBoost,4,Log flags (control panel / relay / Snort),12,2.056582556105487e-08

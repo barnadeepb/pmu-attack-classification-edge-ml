@@ -1,0 +1,29 @@
+{
+  "env": {
+    "tag": "edge-dell",
+    "smoke": false,
+    "python": "3.12.10",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "processor": "Intel64 Family 6 Model 158 Stepping 9, GenuineIntel",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0",
+    "xgboost": "3.4.1",
+    "scipy": "1.18.1",
+    "joblib": "1.5.3",
+    "cpu_count": 4,
+    "ram_gib": 7.9,
+    "cpu_freq_mhz_current": 2712,
+    "cpu_freq_mhz_max": 2712
+  },
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "test_size": 0.2,
+  "latency_samples": 1000,
+  "latency_warmup": 100
+}

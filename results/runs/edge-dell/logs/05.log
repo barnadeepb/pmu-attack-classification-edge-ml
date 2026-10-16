@@ -1,0 +1,38 @@
+[03:54:00] Part A: like-for-like at 2,000 rows
+C:\Workspace\pmu-attack-classification-edge-ml\scripts\common.py:64: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (300) reached and the optimization hasn't converged yet.
+  return _orig_warn(message, category, *args, **kwargs)
+[03:54:16]   split 0 done
+C:\Workspace\pmu-attack-classification-edge-ml\scripts\common.py:64: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (300) reached and the optimization hasn't converged yet.
+  return _orig_warn(message, category, *args, **kwargs)
+[03:54:31]   split 1 done
+C:\Workspace\pmu-attack-classification-edge-ml\scripts\common.py:64: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (300) reached and the optimization hasn't converged yet.
+  return _orig_warn(message, category, *args, **kwargs)
+[03:54:46]   split 2 done
+C:\Workspace\pmu-attack-classification-edge-ml\scripts\common.py:64: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (300) reached and the optimization hasn't converged yet.
+  return _orig_warn(message, category, *args, **kwargs)
+[03:55:02]   split 3 done
+C:\Workspace\pmu-attack-classification-edge-ml\scripts\common.py:64: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (300) reached and the optimization hasn't converged yet.
+  return _orig_warn(message, category, *args, **kwargs)
+[03:55:18]   split 4 done
+[03:55:18] Part B: learning curve
+[03:55:27]   n=2000 SVM fit=0s SVs=1525 acc=0.443 lat(model,1t)=0.42ms
+[03:55:37]   n=2000 SVM fit=0s SVs=1543 acc=0.370 lat(model,1t)=0.42ms
+[03:55:46]   n=2000 SVM fit=0s SVs=1545 acc=0.385 lat(model,1t)=0.42ms
+[03:56:00]   n=5000 SVM fit=2s SVs=3767 acc=0.425 lat(model,1t)=0.80ms
+[03:56:14]   n=5000 SVM fit=2s SVs=3813 acc=0.404 lat(model,1t)=0.80ms
+[03:56:28]   n=5000 SVM fit=2s SVs=3815 acc=0.443 lat(model,1t)=0.84ms
+[03:56:55]   n=10000 SVM fit=10s SVs=7421 acc=0.466 lat(model,1t)=1.54ms
+[03:57:23]   n=10000 SVM fit=10s SVs=7533 acc=0.423 lat(model,1t)=1.65ms
+[03:57:51]   n=10000 SVM fit=10s SVs=7471 acc=0.431 lat(model,1t)=1.56ms
+[03:59:12]   n=20000 SVM fit=49s SVs=14800 acc=0.565 lat(model,1t)=2.93ms
+[03:59:12] Part C: Nystroem + linear SVM on full training split
+[03:59:18]   split 0 k=100 acc=0.609 f1m=0.496
+[03:59:26]   split 0 k=300 acc=0.604 f1m=0.525
+[03:59:47]   split 0 k=1000 acc=0.610 f1m=0.539
+[03:59:52]   split 1 k=100 acc=0.536 f1m=0.500
+[04:00:01]   split 1 k=300 acc=0.595 f1m=0.554
+[04:00:22]   split 1 k=1000 acc=0.593 f1m=0.556
+[04:00:27]   split 2 k=100 acc=0.700 f1m=0.434
+[04:00:35]   split 2 k=300 acc=0.714 f1m=0.451
+[04:00:56]   split 2 k=1000 acc=0.720 f1m=0.484
+[04:00:56] Done.

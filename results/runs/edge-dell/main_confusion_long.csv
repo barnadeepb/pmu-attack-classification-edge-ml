@@ -1,0 +1,406 @@
+model,split,true_label,predicted_label,count
+Logistic Regression,0,Attack,Attack,4302
+Logistic Regression,0,Attack,Natural,5252
+Logistic Regression,0,Attack,NoEvents,1579
+Logistic Regression,0,Natural,Attack,495
+Logistic Regression,0,Natural,Natural,2661
+Logistic Regression,0,Natural,NoEvents,506
+Logistic Regression,0,NoEvents,Attack,14
+Logistic Regression,0,NoEvents,Natural,29
+Logistic Regression,0,NoEvents,NoEvents,838
+Decision Tree,0,Attack,Attack,10008
+Decision Tree,0,Attack,Natural,1012
+Decision Tree,0,Attack,NoEvents,113
+Decision Tree,0,Natural,Attack,1097
+Decision Tree,0,Natural,Natural,2544
+Decision Tree,0,Natural,NoEvents,21
+Decision Tree,0,NoEvents,Attack,86
+Decision Tree,0,NoEvents,Natural,16
+Decision Tree,0,NoEvents,NoEvents,779
+Random Forest,0,Attack,Attack,10439
+Random Forest,0,Attack,Natural,661
+Random Forest,0,Attack,NoEvents,33
+Random Forest,0,Natural,Attack,560
+Random Forest,0,Natural,Natural,3097
+Random Forest,0,Natural,NoEvents,5
+Random Forest,0,NoEvents,Attack,13
+Random Forest,0,NoEvents,Natural,7
+Random Forest,0,NoEvents,NoEvents,861
+XGBoost,0,Attack,Attack,7962
+XGBoost,0,Attack,Natural,2712
+XGBoost,0,Attack,NoEvents,459
+XGBoost,0,Natural,Attack,502
+XGBoost,0,Natural,Natural,3070
+XGBoost,0,Natural,NoEvents,90
+XGBoost,0,NoEvents,Attack,7
+XGBoost,0,NoEvents,Natural,10
+XGBoost,0,NoEvents,NoEvents,864
+MLP (Full),0,Attack,Attack,9928
+MLP (Full),0,Attack,Natural,1083
+MLP (Full),0,Attack,NoEvents,122
+MLP (Full),0,Natural,Attack,1585
+MLP (Full),0,Natural,Natural,2045
+MLP (Full),0,Natural,NoEvents,32
+MLP (Full),0,NoEvents,Attack,106
+MLP (Full),0,NoEvents,Natural,14
+MLP (Full),0,NoEvents,NoEvents,761
+MLP (Compact),0,Attack,Attack,10507
+MLP (Compact),0,Attack,Natural,393
+MLP (Compact),0,Attack,NoEvents,233
+MLP (Compact),0,Natural,Attack,3100
+MLP (Compact),0,Natural,Natural,521
+MLP (Compact),0,Natural,NoEvents,41
+MLP (Compact),0,NoEvents,Attack,243
+MLP (Compact),0,NoEvents,Natural,2
+MLP (Compact),0,NoEvents,NoEvents,636
+"MLP (Full, oversampled)",0,Attack,Attack,9163
+"MLP (Full, oversampled)",0,Attack,Natural,1773
+"MLP (Full, oversampled)",0,Attack,NoEvents,197
+"MLP (Full, oversampled)",0,Natural,Attack,1085
+"MLP (Full, oversampled)",0,Natural,Natural,2537
+"MLP (Full, oversampled)",0,Natural,NoEvents,40
+"MLP (Full, oversampled)",0,NoEvents,Attack,38
+"MLP (Full, oversampled)",0,NoEvents,Natural,9
+"MLP (Full, oversampled)",0,NoEvents,NoEvents,834
+"MLP (Compact, oversampled)",0,Attack,Attack,6059
+"MLP (Compact, oversampled)",0,Attack,Natural,4390
+"MLP (Compact, oversampled)",0,Attack,NoEvents,684
+"MLP (Compact, oversampled)",0,Natural,Attack,1053
+"MLP (Compact, oversampled)",0,Natural,Natural,2448
+"MLP (Compact, oversampled)",0,Natural,NoEvents,161
+"MLP (Compact, oversampled)",0,NoEvents,Attack,19
+"MLP (Compact, oversampled)",0,NoEvents,Natural,17
+"MLP (Compact, oversampled)",0,NoEvents,NoEvents,845
+Logistic Regression,1,Attack,Attack,4321
+Logistic Regression,1,Attack,Natural,5304
+Logistic Regression,1,Attack,NoEvents,1508
+Logistic Regression,1,Natural,Attack,547
+Logistic Regression,1,Natural,Natural,2597
+Logistic Regression,1,Natural,NoEvents,518
+Logistic Regression,1,NoEvents,Attack,22
+Logistic Regression,1,NoEvents,Natural,57
+Logistic Regression,1,NoEvents,NoEvents,802
+Decision Tree,1,Attack,Attack,10094
+Decision Tree,1,Attack,Natural,979
+Decision Tree,1,Attack,NoEvents,60
+Decision Tree,1,Natural,Attack,1049
+Decision Tree,1,Natural,Natural,2593
+Decision Tree,1,Natural,NoEvents,20
+Decision Tree,1,NoEvents,Attack,89
+Decision Tree,1,NoEvents,Natural,22
+Decision Tree,1,NoEvents,NoEvents,770
+Random Forest,1,Attack,Attack,10452
+Random Forest,1,Attack,Natural,650
+Random Forest,1,Attack,NoEvents,31
+Random Forest,1,Natural,Attack,563
+Random Forest,1,Natural,Natural,3094
+Random Forest,1,Natural,NoEvents,5
+Random Forest,1,NoEvents,Attack,21
+Random Forest,1,NoEvents,Natural,5
+Random Forest,1,NoEvents,NoEvents,855
+XGBoost,1,Attack,Attack,7967
+XGBoost,1,Attack,Natural,2664
+XGBoost,1,Attack,NoEvents,502
+XGBoost,1,Natural,Attack,497
+XGBoost,1,Natural,Natural,3074
+XGBoost,1,Natural,NoEvents,91
+XGBoost,1,NoEvents,Attack,7
+XGBoost,1,NoEvents,Natural,7
+XGBoost,1,NoEvents,NoEvents,867
+MLP (Full),1,Attack,Attack,9892
+MLP (Full),1,Attack,Natural,1122
+MLP (Full),1,Attack,NoEvents,119
+MLP (Full),1,Natural,Attack,1472
+MLP (Full),1,Natural,Natural,2159
+MLP (Full),1,Natural,NoEvents,31
+MLP (Full),1,NoEvents,Attack,117
+MLP (Full),1,NoEvents,Natural,36
+MLP (Full),1,NoEvents,NoEvents,728
+MLP (Compact),1,Attack,Attack,10380
+MLP (Compact),1,Attack,Natural,471
+MLP (Compact),1,Attack,NoEvents,282
+MLP (Compact),1,Natural,Attack,3042
+MLP (Compact),1,Natural,Natural,565
+MLP (Compact),1,Natural,NoEvents,55
+MLP (Compact),1,NoEvents,Attack,251
+MLP (Compact),1,NoEvents,Natural,2
+MLP (Compact),1,NoEvents,NoEvents,628
+"MLP (Full, oversampled)",1,Attack,Attack,9079
+"MLP (Full, oversampled)",1,Attack,Natural,1857
+"MLP (Full, oversampled)",1,Attack,NoEvents,197
+"MLP (Full, oversampled)",1,Natural,Attack,993
+"MLP (Full, oversampled)",1,Natural,Natural,2629
+"MLP (Full, oversampled)",1,Natural,NoEvents,40
+"MLP (Full, oversampled)",1,NoEvents,Attack,39
+"MLP (Full, oversampled)",1,NoEvents,Natural,14
+"MLP (Full, oversampled)",1,NoEvents,NoEvents,828
+"MLP (Compact, oversampled)",1,Attack,Attack,5091
+"MLP (Compact, oversampled)",1,Attack,Natural,5225
+"MLP (Compact, oversampled)",1,Attack,NoEvents,817
+"MLP (Compact, oversampled)",1,Natural,Attack,704
+"MLP (Compact, oversampled)",1,Natural,Natural,2785
+"MLP (Compact, oversampled)",1,Natural,NoEvents,173
+"MLP (Compact, oversampled)",1,NoEvents,Attack,14
+"MLP (Compact, oversampled)",1,NoEvents,Natural,44
+"MLP (Compact, oversampled)",1,NoEvents,NoEvents,823
+Logistic Regression,2,Attack,Attack,4223
+Logistic Regression,2,Attack,Natural,5318
+Logistic Regression,2,Attack,NoEvents,1592
+Logistic Regression,2,Natural,Attack,465
+Logistic Regression,2,Natural,Natural,2670
+Logistic Regression,2,Natural,NoEvents,527
+Logistic Regression,2,NoEvents,Attack,16
+Logistic Regression,2,NoEvents,Natural,40
+Logistic Regression,2,NoEvents,NoEvents,825
+Decision Tree,2,Attack,Attack,10094
+Decision Tree,2,Attack,Natural,971
+Decision Tree,2,Attack,NoEvents,68
+Decision Tree,2,Natural,Attack,1064
+Decision Tree,2,Natural,Natural,2571
+Decision Tree,2,Natural,NoEvents,27
+Decision Tree,2,NoEvents,Attack,111
+Decision Tree,2,NoEvents,Natural,16
+Decision Tree,2,NoEvents,NoEvents,754
+Random Forest,2,Attack,Attack,10449
+Random Forest,2,Attack,Natural,657
+Random Forest,2,Attack,NoEvents,27
+Random Forest,2,Natural,Attack,533
+Random Forest,2,Natural,Natural,3125
+Random Forest,2,Natural,NoEvents,4
+Random Forest,2,NoEvents,Attack,20
+Random Forest,2,NoEvents,Natural,6
+Random Forest,2,NoEvents,NoEvents,855
+XGBoost,2,Attack,Attack,8072
+XGBoost,2,Attack,Natural,2589
+XGBoost,2,Attack,NoEvents,472
+XGBoost,2,Natural,Attack,485
+XGBoost,2,Natural,Natural,3107
+XGBoost,2,Natural,NoEvents,70
+XGBoost,2,NoEvents,Attack,11
+XGBoost,2,NoEvents,Natural,12
+XGBoost,2,NoEvents,NoEvents,858
+MLP (Full),2,Attack,Attack,9577
+MLP (Full),2,Attack,Natural,1396
+MLP (Full),2,Attack,NoEvents,160
+MLP (Full),2,Natural,Attack,1334
+MLP (Full),2,Natural,Natural,2294
+MLP (Full),2,Natural,NoEvents,34
+MLP (Full),2,NoEvents,Attack,117
+MLP (Full),2,NoEvents,Natural,31
+MLP (Full),2,NoEvents,NoEvents,733
+MLP (Compact),2,Attack,Attack,10490
+MLP (Compact),2,Attack,Natural,391
+MLP (Compact),2,Attack,NoEvents,252
+MLP (Compact),2,Natural,Attack,3075
+MLP (Compact),2,Natural,Natural,532
+MLP (Compact),2,Natural,NoEvents,55
+MLP (Compact),2,NoEvents,Attack,244
+MLP (Compact),2,NoEvents,Natural,5
+MLP (Compact),2,NoEvents,NoEvents,632
+"MLP (Full, oversampled)",2,Attack,Attack,8561
+"MLP (Full, oversampled)",2,Attack,Natural,2351
+"MLP (Full, oversampled)",2,Attack,NoEvents,221
+"MLP (Full, oversampled)",2,Natural,Attack,800
+"MLP (Full, oversampled)",2,Natural,Natural,2834
+"MLP (Full, oversampled)",2,Natural,NoEvents,28
+"MLP (Full, oversampled)",2,NoEvents,Attack,34
+"MLP (Full, oversampled)",2,NoEvents,Natural,20
+"MLP (Full, oversampled)",2,NoEvents,NoEvents,827
+"MLP (Compact, oversampled)",2,Attack,Attack,5335
+"MLP (Compact, oversampled)",2,Attack,Natural,5122
+"MLP (Compact, oversampled)",2,Attack,NoEvents,676
+"MLP (Compact, oversampled)",2,Natural,Attack,646
+"MLP (Compact, oversampled)",2,Natural,Natural,2878
+"MLP (Compact, oversampled)",2,Natural,NoEvents,138
+"MLP (Compact, oversampled)",2,NoEvents,Attack,13
+"MLP (Compact, oversampled)",2,NoEvents,Natural,35
+"MLP (Compact, oversampled)",2,NoEvents,NoEvents,833
+Logistic Regression,3,Attack,Attack,4280
+Logistic Regression,3,Attack,Natural,5398
+Logistic Regression,3,Attack,NoEvents,1455
+Logistic Regression,3,Natural,Attack,451
+Logistic Regression,3,Natural,Natural,2665
+Logistic Regression,3,Natural,NoEvents,546
+Logistic Regression,3,NoEvents,Attack,10
+Logistic Regression,3,NoEvents,Natural,39
+Logistic Regression,3,NoEvents,NoEvents,832
+Decision Tree,3,Attack,Attack,10083
+Decision Tree,3,Attack,Natural,974
+Decision Tree,3,Attack,NoEvents,76
+Decision Tree,3,Natural,Attack,1066
+Decision Tree,3,Natural,Natural,2571
+Decision Tree,3,Natural,NoEvents,25
+Decision Tree,3,NoEvents,Attack,90
+Decision Tree,3,NoEvents,Natural,24
+Decision Tree,3,NoEvents,NoEvents,767
+Random Forest,3,Attack,Attack,10423
+Random Forest,3,Attack,Natural,687
+Random Forest,3,Attack,NoEvents,23
+Random Forest,3,Natural,Attack,573
+Random Forest,3,Natural,Natural,3084
+Random Forest,3,Natural,NoEvents,5
+Random Forest,3,NoEvents,Attack,17
+Random Forest,3,NoEvents,Natural,3
+Random Forest,3,NoEvents,NoEvents,861
+XGBoost,3,Attack,Attack,7952
+XGBoost,3,Attack,Natural,2731
+XGBoost,3,Attack,NoEvents,450
+XGBoost,3,Natural,Attack,484
+XGBoost,3,Natural,Natural,3096
+XGBoost,3,Natural,NoEvents,82
+XGBoost,3,NoEvents,Attack,11
+XGBoost,3,NoEvents,Natural,5
+XGBoost,3,NoEvents,NoEvents,865
+MLP (Full),3,Attack,Attack,9495
+MLP (Full),3,Attack,Natural,1499
+MLP (Full),3,Attack,NoEvents,139
+MLP (Full),3,Natural,Attack,1256
+MLP (Full),3,Natural,Natural,2367
+MLP (Full),3,Natural,NoEvents,39
+MLP (Full),3,NoEvents,Attack,89
+MLP (Full),3,NoEvents,Natural,26
+MLP (Full),3,NoEvents,NoEvents,766
+MLP (Compact),3,Attack,Attack,10436
+MLP (Compact),3,Attack,Natural,458
+MLP (Compact),3,Attack,NoEvents,239
+MLP (Compact),3,Natural,Attack,3084
+MLP (Compact),3,Natural,Natural,546
+MLP (Compact),3,Natural,NoEvents,32
+MLP (Compact),3,NoEvents,Attack,205
+MLP (Compact),3,NoEvents,Natural,4
+MLP (Compact),3,NoEvents,NoEvents,672
+"MLP (Full, oversampled)",3,Attack,Attack,8916
+"MLP (Full, oversampled)",3,Attack,Natural,2027
+"MLP (Full, oversampled)",3,Attack,NoEvents,190
+"MLP (Full, oversampled)",3,Natural,Attack,875
+"MLP (Full, oversampled)",3,Natural,Natural,2749
+"MLP (Full, oversampled)",3,Natural,NoEvents,38
+"MLP (Full, oversampled)",3,NoEvents,Attack,25
+"MLP (Full, oversampled)",3,NoEvents,Natural,15
+"MLP (Full, oversampled)",3,NoEvents,NoEvents,841
+"MLP (Compact, oversampled)",3,Attack,Attack,5390
+"MLP (Compact, oversampled)",3,Attack,Natural,5081
+"MLP (Compact, oversampled)",3,Attack,NoEvents,662
+"MLP (Compact, oversampled)",3,Natural,Attack,725
+"MLP (Compact, oversampled)",3,Natural,Natural,2765
+"MLP (Compact, oversampled)",3,Natural,NoEvents,172
+"MLP (Compact, oversampled)",3,NoEvents,Attack,19
+"MLP (Compact, oversampled)",3,NoEvents,Natural,21
+"MLP (Compact, oversampled)",3,NoEvents,NoEvents,841
+Logistic Regression,4,Attack,Attack,4324
+Logistic Regression,4,Attack,Natural,5259
+Logistic Regression,4,Attack,NoEvents,1550
+Logistic Regression,4,Natural,Attack,495
+Logistic Regression,4,Natural,Natural,2653
+Logistic Regression,4,Natural,NoEvents,514
+Logistic Regression,4,NoEvents,Attack,19
+Logistic Regression,4,NoEvents,Natural,45
+Logistic Regression,4,NoEvents,NoEvents,817
+Decision Tree,4,Attack,Attack,10015
+Decision Tree,4,Attack,Natural,1043
+Decision Tree,4,Attack,NoEvents,75
+Decision Tree,4,Natural,Attack,1102
+Decision Tree,4,Natural,Natural,2535
+Decision Tree,4,Natural,NoEvents,25
+Decision Tree,4,NoEvents,Attack,85
+Decision Tree,4,NoEvents,Natural,27
+Decision Tree,4,NoEvents,NoEvents,769
+Random Forest,4,Attack,Attack,10361
+Random Forest,4,Attack,Natural,732
+Random Forest,4,Attack,NoEvents,40
+Random Forest,4,Natural,Attack,532
+Random Forest,4,Natural,Natural,3125
+Random Forest,4,Natural,NoEvents,5
+Random Forest,4,NoEvents,Attack,23
+Random Forest,4,NoEvents,Natural,5
+Random Forest,4,NoEvents,NoEvents,853
+XGBoost,4,Attack,Attack,8061
+XGBoost,4,Attack,Natural,2620
+XGBoost,4,Attack,NoEvents,452
+XGBoost,4,Natural,Attack,471
+XGBoost,4,Natural,Natural,3115
+XGBoost,4,Natural,NoEvents,76
+XGBoost,4,NoEvents,Attack,10
+XGBoost,4,NoEvents,Natural,11
+XGBoost,4,NoEvents,NoEvents,860
+MLP (Full),4,Attack,Attack,9820
+MLP (Full),4,Attack,Natural,1175
+MLP (Full),4,Attack,NoEvents,138
+MLP (Full),4,Natural,Attack,1499
+MLP (Full),4,Natural,Natural,2130
+MLP (Full),4,Natural,NoEvents,33
+MLP (Full),4,NoEvents,Attack,91
+MLP (Full),4,NoEvents,Natural,18
+MLP (Full),4,NoEvents,NoEvents,772
+MLP (Compact),4,Attack,Attack,10530
+MLP (Compact),4,Attack,Natural,355
+MLP (Compact),4,Attack,NoEvents,248
+MLP (Compact),4,Natural,Attack,3138
+MLP (Compact),4,Natural,Natural,468
+MLP (Compact),4,Natural,NoEvents,56
+MLP (Compact),4,NoEvents,Attack,264
+MLP (Compact),4,NoEvents,Natural,3
+MLP (Compact),4,NoEvents,NoEvents,614
+"MLP (Full, oversampled)",4,Attack,Attack,8863
+"MLP (Full, oversampled)",4,Attack,Natural,2147
+"MLP (Full, oversampled)",4,Attack,NoEvents,123
+"MLP (Full, oversampled)",4,Natural,Attack,810
+"MLP (Full, oversampled)",4,Natural,Natural,2828
+"MLP (Full, oversampled)",4,Natural,NoEvents,24
+"MLP (Full, oversampled)",4,NoEvents,Attack,49
+"MLP (Full, oversampled)",4,NoEvents,Natural,47
+"MLP (Full, oversampled)",4,NoEvents,NoEvents,785
+"MLP (Compact, oversampled)",4,Attack,Attack,5753
+"MLP (Compact, oversampled)",4,Attack,Natural,4709
+"MLP (Compact, oversampled)",4,Attack,NoEvents,671
+"MLP (Compact, oversampled)",4,Natural,Attack,906
+"MLP (Compact, oversampled)",4,Natural,Natural,2613
+"MLP (Compact, oversampled)",4,Natural,NoEvents,143
+"MLP (Compact, oversampled)",4,NoEvents,Attack,12
+"MLP (Compact, oversampled)",4,NoEvents,Natural,27
+"MLP (Compact, oversampled)",4,NoEvents,NoEvents,842
+"SVM (RBF, n=2000)",0,Attack,Attack,130
+"SVM (RBF, n=2000)",0,Attack,Natural,50
+"SVM (RBF, n=2000)",0,Attack,NoEvents,99
+"SVM (RBF, n=2000)",0,Natural,Attack,36
+"SVM (RBF, n=2000)",0,Natural,Natural,27
+"SVM (RBF, n=2000)",0,Natural,NoEvents,35
+"SVM (RBF, n=2000)",0,NoEvents,Attack,4
+"SVM (RBF, n=2000)",0,NoEvents,Natural,0
+"SVM (RBF, n=2000)",0,NoEvents,NoEvents,19
+"SVM (RBF, n=2000)",1,Attack,Attack,133
+"SVM (RBF, n=2000)",1,Attack,Natural,45
+"SVM (RBF, n=2000)",1,Attack,NoEvents,106
+"SVM (RBF, n=2000)",1,Natural,Attack,32
+"SVM (RBF, n=2000)",1,Natural,Natural,30
+"SVM (RBF, n=2000)",1,Natural,NoEvents,30
+"SVM (RBF, n=2000)",1,NoEvents,Attack,1
+"SVM (RBF, n=2000)",1,NoEvents,Natural,0
+"SVM (RBF, n=2000)",1,NoEvents,NoEvents,23
+"SVM (RBF, n=2000)",2,Attack,Attack,124
+"SVM (RBF, n=2000)",2,Attack,Natural,67
+"SVM (RBF, n=2000)",2,Attack,NoEvents,91
+"SVM (RBF, n=2000)",2,Natural,Attack,26
+"SVM (RBF, n=2000)",2,Natural,Natural,45
+"SVM (RBF, n=2000)",2,Natural,NoEvents,24
+"SVM (RBF, n=2000)",2,NoEvents,Attack,3
+"SVM (RBF, n=2000)",2,NoEvents,Natural,1
+"SVM (RBF, n=2000)",2,NoEvents,NoEvents,19
+"SVM (RBF, n=2000)",3,Attack,Attack,125
+"SVM (RBF, n=2000)",3,Attack,Natural,53
+"SVM (RBF, n=2000)",3,Attack,NoEvents,109
+"SVM (RBF, n=2000)",3,Natural,Attack,36
+"SVM (RBF, n=2000)",3,Natural,Natural,23
+"SVM (RBF, n=2000)",3,Natural,NoEvents,33
+"SVM (RBF, n=2000)",3,NoEvents,Attack,4
+"SVM (RBF, n=2000)",3,NoEvents,Natural,1
+"SVM (RBF, n=2000)",3,NoEvents,NoEvents,16
+"SVM (RBF, n=2000)",4,Attack,Attack,102
+"SVM (RBF, n=2000)",4,Attack,Natural,78
+"SVM (RBF, n=2000)",4,Attack,NoEvents,97
+"SVM (RBF, n=2000)",4,Natural,Attack,33
+"SVM (RBF, n=2000)",4,Natural,Natural,32
+"SVM (RBF, n=2000)",4,Natural,NoEvents,33
+"SVM (RBF, n=2000)",4,NoEvents,Attack,5
+"SVM (RBF, n=2000)",4,NoEvents,Natural,3
+"SVM (RBF, n=2000)",4,NoEvents,NoEvents,17

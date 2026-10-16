@@ -1,0 +1,21 @@
+[04:49:01] === split 1/5 ===
+[04:49:23]   Decision Tree: done (baseline macro-F1 on eval rows = 0.818)
+[04:50:44]   Random Forest: done (baseline macro-F1 on eval rows = 0.921)
+[04:51:18]   XGBoost: done (baseline macro-F1 on eval rows = 0.731)
+[04:51:18] === split 2/5 ===
+[04:51:39]   Decision Tree: done (baseline macro-F1 on eval rows = 0.843)
+[04:53:00]   Random Forest: done (baseline macro-F1 on eval rows = 0.909)
+[04:53:33]   XGBoost: done (baseline macro-F1 on eval rows = 0.731)
+[04:53:33] === split 3/5 ===
+[04:53:54]   Decision Tree: done (baseline macro-F1 on eval rows = 0.830)
+[04:55:14]   Random Forest: done (baseline macro-F1 on eval rows = 0.914)
+[04:55:47]   XGBoost: done (baseline macro-F1 on eval rows = 0.743)
+[04:55:47] === split 4/5 ===
+[04:56:09]   Decision Tree: done (baseline macro-F1 on eval rows = 0.821)
+[04:57:29]   Random Forest: done (baseline macro-F1 on eval rows = 0.913)
+[04:58:03]   XGBoost: done (baseline macro-F1 on eval rows = 0.738)
+[04:58:03] === split 5/5 ===
+[04:58:24]   Decision Tree: done (baseline macro-F1 on eval rows = 0.821)
+[04:59:44]   Random Forest: done (baseline macro-F1 on eval rows = 0.913)
+[05:00:19]   XGBoost: done (baseline macro-F1 on eval rows = 0.741)
+[05:00:19] Done.

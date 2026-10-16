@@ -1,0 +1,31 @@
+[01:19:59] === split 1/5 ===
+[01:20:09]   tier model A   f1m=0.492 lat=0.61ms size=18KB
+[01:20:25]   tier model B   f1m=0.823 lat=0.66ms size=1157KB
+[01:20:41]   tier model B*  f1m=0.742 lat=0.59ms size=494KB
+[01:21:00]   tier model M   f1m=0.687 lat=2.76ms size=4009KB
+[01:23:22]   tier model C   f1m=0.915 lat=16.21ms size=179831KB
+[01:23:23] === split 2/5 ===
+[01:23:32]   tier model A   f1m=0.514 lat=0.58ms size=17KB
+[01:23:47]   tier model B   f1m=0.836 lat=0.59ms size=1120KB
+[01:24:01]   tier model B*  f1m=0.753 lat=0.58ms size=495KB
+[01:24:20]   tier model M   f1m=0.665 lat=2.76ms size=3908KB
+[01:26:42]   tier model C   f1m=0.914 lat=16.13ms size=178984KB
+[01:26:43] === split 3/5 ===
+[01:26:52]   tier model A   f1m=0.503 lat=0.60ms size=18KB
+[01:27:07]   tier model B   f1m=0.828 lat=0.61ms size=1181KB
+[01:27:21]   tier model B*  f1m=0.743 lat=0.58ms size=517KB
+[01:27:41]   tier model M   f1m=0.673 lat=2.77ms size=4032KB
+[01:30:10]   tier model C   f1m=0.917 lat=16.17ms size=179163KB
+[01:30:11] === split 4/5 ===
+[01:30:20]   tier model A   f1m=0.480 lat=0.59ms size=19KB
+[01:30:35]   tier model B   f1m=0.830 lat=0.58ms size=1185KB
+[01:30:49]   tier model B*  f1m=0.753 lat=0.58ms size=513KB
+[01:31:09]   tier model M   f1m=0.681 lat=2.88ms size=4131KB
+[01:33:29]   tier model C   f1m=0.915 lat=16.14ms size=179179KB
+[01:33:30] === split 5/5 ===
+[01:33:39]   tier model A   f1m=0.522 lat=0.58ms size=18KB
+[01:33:54]   tier model B   f1m=0.824 lat=0.59ms size=1197KB
+[01:34:08]   tier model B*  f1m=0.742 lat=0.58ms size=517KB
+[01:34:27]   tier model M   f1m=0.669 lat=2.75ms size=3962KB
+[01:36:49]   tier model C   f1m=0.910 lat=16.11ms size=178815KB
+[01:36:51] Done.

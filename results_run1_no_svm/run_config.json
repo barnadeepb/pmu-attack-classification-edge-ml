@@ -1,0 +1,20 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "test_size": 0.2,
+  "streaming_budget_ms": 16.666666666666668,
+  "trip_budget_ms": 3.0,
+  "tabpfn_enabled": false,
+  "n_rows": 78377,
+  "n_features": 128,
+  "class_names": [
+    "Attack",
+    "Natural",
+    "NoEvents"
+  ]
+}
