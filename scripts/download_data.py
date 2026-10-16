@@ -21,6 +21,11 @@ import py7zr
 import requests
 
 DATA_URL = "http://www.ece.uah.edu/~thm0009/icsdatasets/triple.7z"
+# The original UAH host returned HTTP 404 when re-checked in October 2026.
+# The Internet Archive holds a snapshot of the same URL; it is tried second
+# and size-checked against the archive used for the original experiments.
+MIRROR_URL = "https://web.archive.org/web/2022if_/http://www.ece.uah.edu/~thm0009/icsdatasets/triple.7z"
+EXPECTED_ARCHIVE_BYTES = 19_701_721
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -33,16 +38,9 @@ EXPECTED_FILES = [f"data{i}.csv" for i in range(1, 16)]
 EXPECTED_COLUMNS = 129  # 128 features + marker
 
 
-def download_archive():
-    if ARCHIVE_PATH.exists():
-        print(f"Found existing archive at {ARCHIVE_PATH}, skipping download.")
-        return
-
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    print(f"Downloading dataset from {DATA_URL} ...")
-
+def _try_download(url):
     try:
-        with requests.get(DATA_URL, stream=True, timeout=60) as response:
+        with requests.get(url, stream=True, timeout=60) as response:
             response.raise_for_status()
             total = int(response.headers.get("content-length", 0))
             written = 0
@@ -57,10 +55,31 @@ def download_archive():
     except requests.RequestException as exc:
         if ARCHIVE_PATH.exists():
             ARCHIVE_PATH.unlink()
-        print(f"\nDownload failed: {exc}")
-        print(f"Manually download {DATA_URL} and save it to:\n  {ARCHIVE_PATH}")
-        print("Then re-run this script.")
-        sys.exit(1)
+        print(f"\nDownload from {url} failed: {exc}")
+        return False
+
+    if ARCHIVE_PATH.stat().st_size != EXPECTED_ARCHIVE_BYTES:
+        print(f"Unexpected archive size {ARCHIVE_PATH.stat().st_size} bytes; discarding.")
+        ARCHIVE_PATH.unlink()
+        return False
+    return True
+
+
+def download_archive():
+    if ARCHIVE_PATH.exists():
+        print(f"Found existing archive at {ARCHIVE_PATH}, skipping download.")
+        return
+
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    for url in (DATA_URL, MIRROR_URL):
+        print(f"Downloading dataset from {url} ...")
+        if _try_download(url):
+            return
+
+    print(f"All downloads failed. Manually download {DATA_URL} and save it to:")
+    print(f"  {ARCHIVE_PATH}")
+    print("Then re-run this script.")
+    sys.exit(1)
 
 
 def extract_archive():
@@ -83,10 +102,14 @@ def extract_archive():
 def combine_files():
     print("Combining 15 source files into a single dataset ...")
     frames = []
-    for name in EXPECTED_FILES:
+    for file_no, name in enumerate(EXPECTED_FILES, start=1):
         df = pd.read_csv(EXTRACT_DIR / name)
         if df.shape[1] != EXPECTED_COLUMNS:
             print(f"WARNING: {name} has {df.shape[1]} columns, expected {EXPECTED_COLUMNS}.")
+        # Keep the scenario-file index so experiments can split by scenario
+        # (leave-one-scenario-out) instead of only by random rows. It is a
+        # bookkeeping column and must never be used as a model feature.
+        df["source_file"] = file_no
         frames.append(df)
 
     combined = pd.concat(frames, ignore_index=True)
@@ -99,11 +122,13 @@ def combine_files():
     combined.to_csv(OUTPUT_PATH, index=False)
 
     print(f"\nSaved combined dataset to {OUTPUT_PATH}")
-    print(f"Shape: {combined.shape[0]} rows x {combined.shape[1]} columns")
+    print(f"Shape: {combined.shape[0]} rows x {combined.shape[1]} columns (incl. source_file)")
     print("Class distribution:")
     counts = combined["marker"].value_counts()
     for label, count in counts.items():
         print(f"  {label:<10} {count:>6}  ({100 * count / len(combined):5.1f}%)")
+    print("Per source file class counts:")
+    print(pd.crosstab(combined["source_file"], combined["marker"]).to_string())
 
 
 if __name__ == "__main__":
