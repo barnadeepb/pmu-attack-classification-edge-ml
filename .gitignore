@@ -13,3 +13,6 @@ Thumbs.db
 .claude/
 
 .local_files/
+
+# cached fitted models written by scripts/08_latency_repeat.py (large, regenerated)
+results/runs/*/.cache_models/

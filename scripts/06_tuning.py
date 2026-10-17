@@ -13,8 +13,16 @@ has no class/sample weights), applied inside each CV training fold only.
 
 Outputs: tuning_best_params.json, tuning_cv_results.csv,
          tuned_per_split.csv, tuned_summary.csv, tuned_confusion_long.csv
+         (with --protocol blocked|group5: tuning_<protocol>_* / tuned_<protocol>_*)
+
+Flags:   --protocol random|blocked|group5   evaluation protocol (default random, as submitted).
+                                            For blocked/group5 the 3-fold search CV is also
+                                            scenario-grouped (GroupKFold over source files) so
+                                            hyper-parameters are not chosen on leaky folds.
+         --skip-latency                     skip latency measurement (not split dependent)
 """
 
+import argparse
 import time
 
 import numpy as np
@@ -22,7 +30,7 @@ import pandas as pd
 from scipy.stats import loguniform
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold
+from sklearn.model_selection import GroupKFold, RandomizedSearchCV, StratifiedKFold
 from sklearn.neural_network import MLPClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.utils.class_weight import compute_sample_weight
@@ -72,10 +80,17 @@ def set_params_on_pipe(pipe, params):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--protocol", choices=C.PROTOCOLS, default="random")
+    ap.add_argument("--skip-latency", action="store_true")
+    args = ap.parse_args()
+    suf = C.protocol_suffix(args.protocol)
+
     C.ensure_dirs()
     X, y, groups, _ = C.load_data()
     seed0 = C.SEEDS[0]
-    tr0, _ = C.stratified_split(X, y, seed0)
+    splits = list(C.iter_splits(args.protocol, X, y, groups))
+    tr0 = splits[0][2]
 
     # stratified search subsample drawn from split-0 training rows only
     rng = np.random.RandomState(seed0)
@@ -86,14 +101,18 @@ def main():
         sub.append(rng.choice(members, size=min(take, len(members)), replace=False))
     sub = np.concatenate(sub)
     X_s, y_s = X.iloc[sub], y[sub]
-    C.log(f"Search subsample: {len(sub)} rows")
+    C.log(f"Search subsample: {len(sub)} rows (protocol {args.protocol})")
+    if args.protocol == "random":
+        search_cv = StratifiedKFold(3, shuffle=True, random_state=seed0)
+    else:
+        search_cv = list(GroupKFold(n_splits=3).split(X_s, y_s, groups[sub]))
 
     best_params, cv_rows, rows, conf_rows = {}, [], [], []
     for name, (factory, space, uses_sw) in search_space().items():
         C.log(f"--- tuning {name} ({N_ITER} candidates x 3 folds)")
         pipe = C.make_pipeline(factory())
         search = RandomizedSearchCV(pipe, space, n_iter=N_ITER, scoring="f1_macro",
-                                    cv=StratifiedKFold(3, shuffle=True, random_state=seed0),
+                                    cv=search_cv,
                                     random_state=seed0, n_jobs=1, refit=False, error_score="raise")
         fit_kwargs = {"clf__sample_weight": compute_sample_weight("balanced", y_s)} if uses_sw else {}
         t0 = time.perf_counter()
@@ -104,8 +123,7 @@ def main():
         res.insert(0, "model", name)
         cv_rows.append(res)
 
-        for split_i, seed in enumerate(C.SEEDS):
-            tr, te = C.stratified_split(X, y, seed)
+        for split_i, seed, tr, te in splits:
             pipe = C.make_pipeline(factory())
             pipe.set_params(**search.best_params_)
             est = C.final_estimator(pipe)
@@ -119,27 +137,30 @@ def main():
             fit_s = time.perf_counter() - t0
             y_pred = pipe.predict(X.iloc[te])
             proba = pipe.predict_proba(X.iloc[te])
-            row = {"model": name, "split": split_i, "seed": seed, "n_train": len(tr), "n_test": len(te)}
+            row = {"model": name, "split": split_i, "seed": seed, "protocol": args.protocol,
+                   "n_train": len(tr), "n_test": len(te)}
             row.update(C.full_metrics(y[te], y_pred, proba))
             row["train_time_s"] = fit_s
             row["size_kb"] = C.size_kb(pipe)
             row.update(C.model_complexity(pipe))
-            row.update(C.flatten_latency(C.measure_latency(pipe, X.iloc[te])))
+            msg = ""
+            if not args.skip_latency:
+                row.update(C.flatten_latency(C.measure_latency(pipe, X.iloc[te])))
+                msg = f" lat(np,1t)={row['lat_pipeline_np_1thread_mean']:.2f}ms"
             rows.append(row)
             conf_rows.extend(C.confusion_long(name, split_i, y[te], y_pred))
-            C.log(f"    split {split_i}: acc={row['accuracy']:.3f} f1m={row['f1_macro']:.3f} "
-                  f"lat(np,1t)={row['lat_pipeline_np_1thread_mean']:.2f}ms size={row['size_kb']:.0f}KB")
+            C.log(f"    split {split_i}: acc={row['accuracy']:.3f} f1m={row['f1_macro']:.3f}{msg} size={row['size_kb']:.0f}KB")
 
-        pd.concat(cv_rows).to_csv(C.RESULTS_DIR / "tuning_cv_results.csv", index=False)
-        C.save_json(best_params, C.RESULTS_DIR / "tuning_best_params.json")
-        pd.DataFrame(rows).to_csv(C.RESULTS_DIR / "tuned_per_split.csv", index=False)
+        pd.concat(cv_rows).to_csv(C.RESULTS_DIR / f"tuning{suf}_cv_results.csv", index=False)
+        C.save_json(best_params, C.RESULTS_DIR / f"tuning{suf}_best_params.json")
+        pd.DataFrame(rows).to_csv(C.RESULTS_DIR / f"tuned{suf}_per_split.csv", index=False)
 
     per = pd.DataFrame(rows)
-    num = per.select_dtypes("number").drop(columns=["split"], errors="ignore")
+    num = per.select_dtypes("number").drop(columns=["split", "seed", "n_train", "n_test"], errors="ignore")
     g = per.groupby("model", sort=False)
     summary = pd.concat([g[num.columns].mean().add_suffix("_mean"), g[num.columns].std().add_suffix("_std")], axis=1).reset_index()
-    summary.to_csv(C.RESULTS_DIR / "tuned_summary.csv", index=False)
-    pd.DataFrame(conf_rows).to_csv(C.RESULTS_DIR / "tuned_confusion_long.csv", index=False)
+    summary.to_csv(C.RESULTS_DIR / f"tuned{suf}_summary.csv", index=False)
+    pd.DataFrame(conf_rows).to_csv(C.RESULTS_DIR / f"tuned{suf}_confusion_long.csv", index=False)
     C.log("Done.")
 
 

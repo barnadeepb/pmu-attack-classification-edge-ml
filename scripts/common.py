@@ -38,7 +38,7 @@ from sklearn.metrics import (
     precision_recall_fscore_support,
     roc_auc_score,
 )
-from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn.model_selection import GroupKFold, StratifiedShuffleSplit
 from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -196,6 +196,36 @@ def load_data(smoke_rows=6000):
         raise RuntimeError("Unexpected label values in 'marker'")
     y = y.astype(int)
     return X, y, groups, rel_pos
+
+
+PROTOCOLS = ("random", "blocked", "group5")
+
+
+def protocol_suffix(protocol):
+    """File-name suffix so non-default protocols never overwrite random-split outputs."""
+    return "" if protocol == "random" else f"_{protocol}"
+
+
+def iter_splits(protocol, X, y, groups):
+    """Yield (split_i, seed, train_idx, test_idx) for an evaluation protocol.
+
+    random   five stratified random 80/20 row splits (the submitted paper's protocol)
+    blocked  five contiguous-chunk splits with a purge gap (see blocked_split)
+    group5   five folds that hold out 3 of the 15 source files each (leave-scenarios-out)
+    """
+    if protocol == "random":
+        for i, seed in enumerate(SEEDS):
+            tr, te = stratified_split(X, y, seed)
+            yield i, seed, tr, te
+    elif protocol == "blocked":
+        for i, seed in enumerate(SEEDS):
+            tr, te = blocked_split(groups, seed)
+            yield i, seed, tr, te
+    elif protocol == "group5":
+        for i, (tr, te) in enumerate(GroupKFold(n_splits=5).split(X, y, groups)):
+            yield i, SEEDS[0], tr, te
+    else:
+        raise ValueError(f"unknown protocol {protocol!r}; choose from {PROTOCOLS}")
 
 
 def stratified_split(X, y, seed):

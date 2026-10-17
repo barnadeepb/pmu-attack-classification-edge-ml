@@ -7,7 +7,14 @@ records the full metric set, serialized size and latency (all four modes), so
 the accuracy-latency-footprint Pareto front can be drawn.
 
 Output: sweep_per_split.csv, sweep_summary.csv
+        (with --protocol blocked|group5: sweep_<protocol>_*.csv)
+
+Flags:  --protocol random|blocked|group5   evaluation protocol (default random, as submitted)
+        --skip-latency                     skip latency measurement (it does not depend on the
+                                           split; reuse the random-protocol latency numbers)
 """
+
+import argparse
 
 import time
 
@@ -49,12 +56,17 @@ def settings():
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--protocol", choices=C.PROTOCOLS, default="random")
+    ap.add_argument("--skip-latency", action="store_true")
+    args = ap.parse_args()
+    suf = C.protocol_suffix(args.protocol)
+
     C.ensure_dirs()
     X, y, groups, _ = C.load_data()
     rows = []
-    for split_i, seed in enumerate(C.SEEDS):
-        C.log(f"=== split {split_i + 1}/{len(C.SEEDS)} ===")
-        tr, te = C.stratified_split(X, y, seed)
+    for split_i, seed, tr, te in C.iter_splits(args.protocol, X, y, groups):
+        C.log(f"=== {args.protocol} split {split_i + 1} ===")
         X_tr, X_te, y_tr, y_te = X.iloc[tr], X.iloc[te], y[tr], y[te]
         for family, label, params, factory, uses_sw in settings():
             pipe = C.make_pipeline(factory(seed))
@@ -65,24 +77,27 @@ def main():
                 pipe.fit(X_tr, y_tr)
             fit_s = time.perf_counter() - t0
             y_pred = pipe.predict(X_te)
-            row = {"family": family, "setting": label, "split": split_i, "seed": seed}
+            row = {"family": family, "setting": label, "split": split_i, "seed": seed,
+                   "protocol": args.protocol, "n_train": len(tr), "n_test": len(te)}
             row.update({f"param_{k}": v for k, v in params.items()})
             row.update(C.full_metrics(y_te, y_pred, pipe.predict_proba(X_te)))
             row["train_time_s"] = fit_s
             row["size_kb"] = C.size_kb(pipe)
             row.update(C.model_complexity(pipe))
-            lat = C.measure_latency(pipe, X_te)
-            row.update(C.flatten_latency(lat))
+            msg = ""
+            if not args.skip_latency:
+                lat = C.measure_latency(pipe, X_te)
+                row.update(C.flatten_latency(lat))
+                msg = f" lat(np,1t)={lat['pipeline_np_1thread']['mean']:.2f}ms"
             rows.append(row)
-            C.log(f"  {family:<14}{label:<22} f1m={row['f1_macro']:.3f} "
-                  f"lat(np,1t)={lat['pipeline_np_1thread']['mean']:.2f}ms size={row['size_kb']:.0f}KB")
+            C.log(f"  {family:<14}{label:<22} acc={row['accuracy']:.3f} f1m={row['f1_macro']:.3f}{msg} size={row['size_kb']:.0f}KB")
 
     per = pd.DataFrame(rows)
-    per.to_csv(C.RESULTS_DIR / "sweep_per_split.csv", index=False)
-    num = per.select_dtypes("number").drop(columns=["split", "seed"], errors="ignore")
+    per.to_csv(C.RESULTS_DIR / f"sweep{suf}_per_split.csv", index=False)
+    num = per.select_dtypes("number").drop(columns=["split", "seed", "n_train", "n_test"], errors="ignore")
     g = per.groupby(["family", "setting"], sort=False)
     summary = pd.concat([g[num.columns].mean().add_suffix("_mean"), g[num.columns].std().add_suffix("_std")], axis=1).reset_index()
-    summary.to_csv(C.RESULTS_DIR / "sweep_summary.csv", index=False)
+    summary.to_csv(C.RESULTS_DIR / f"sweep{suf}_summary.csv", index=False)
     C.log("Done.")
 
 

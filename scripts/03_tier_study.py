@@ -35,7 +35,16 @@ an explicit assumed link round trip, swept rather than claimed.
 
 Output: tier_results.csv (one row per split x config x policy x threshold),
         tier_summary.csv, tier_model_latency.csv
+        (with --protocol blocked|group5: tier_<protocol>_*.csv)
+
+Flags:  --protocol random|blocked|group5   evaluation protocol (default random, as submitted)
+        --latency-from PATH                reuse per-tier-model latencies from an earlier
+                                           tier_model_latency.csv (e.g. the edge-device run)
+                                           instead of measuring; latency does not depend on
+                                           the split, accuracy does
 """
+
+import argparse
 
 import itertools
 
@@ -108,13 +117,24 @@ def expected_latency(tier_names, shares, lat, rtt):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--protocol", choices=C.PROTOCOLS, default="random")
+    ap.add_argument("--latency-from", default=None)
+    args = ap.parse_args()
+    suf = C.protocol_suffix(args.protocol)
+
+    ref_lat = None
+    if args.latency_from:
+        ref = pd.read_csv(args.latency_from)
+        ref_lat = ref.groupby("tier_model")["pipeline_np_1thread_ms"].mean().to_dict()
+        C.log(f"Using latencies from {args.latency_from}: " + ", ".join(f"{k}={v:.2f}ms" for k, v in ref_lat.items()))
+
     C.ensure_dirs()
     X, y, groups, _ = C.load_data()
     rows = []
     lat_rows = []
-    for split_i, seed in enumerate(C.SEEDS):
-        C.log(f"=== split {split_i + 1}/{len(C.SEEDS)} ===")
-        tr, te = C.stratified_split(X, y, seed)
+    for split_i, seed, tr, te in C.iter_splits(args.protocol, X, y, groups):
+        C.log(f"=== {args.protocol} split {split_i + 1} ===")
         X_tr, X_te, y_tr, y_te = X.iloc[tr], X.iloc[te], y[tr], y[te]
 
         fitted, P, lat, size = {}, {}, {}, {}
@@ -123,14 +143,19 @@ def main():
             pipe.fit(X_tr, y_tr)
             fitted[name] = pipe
             P[name] = (pipe.predict(X_te), pipe.predict_proba(X_te))
-            lat_all = C.measure_latency(pipe, X_te)
-            st, full = lat_all["model_only_1thread"], lat_all["pipeline_np_1thread"]
-            lat[name] = full["mean"]          # preprocessing + model, 1 thread, numpy row
             size[name] = C.size_kb(pipe)
-            lat_rows.append({"split": split_i, "tier_model": name, "model_only_ms": st["mean"],
-                             "pipeline_np_1thread_ms": full["mean"], "p99_ms": full["p99"], "size_kb": size[name]})
+            if ref_lat is not None:
+                lat[name] = ref_lat[name]
+                lat_msg = f"{lat[name]:.2f}ms (reused)"
+            else:
+                lat_all = C.measure_latency(pipe, X_te)
+                st, full = lat_all["model_only_1thread"], lat_all["pipeline_np_1thread"]
+                lat[name] = full["mean"]          # preprocessing + model, 1 thread, numpy row
+                lat_rows.append({"split": split_i, "tier_model": name, "model_only_ms": st["mean"],
+                                 "pipeline_np_1thread_ms": full["mean"], "p99_ms": full["p99"], "size_kb": size[name]})
+                lat_msg = f"{full['mean']:.2f}ms"
             C.log(f"  tier model {name:<3} f1m={C.full_metrics(y_te, P[name][0])['f1_macro']:.3f} "
-                  f"lat={full['mean']:.2f}ms size={size[name]:.0f}KB")
+                  f"lat={lat_msg} size={size[name]:.0f}KB")
 
         for cfg in CONFIGS:
             soft_cfg = [SOFT.get(t, t) if i < len(cfg) - 1 else t for i, t in enumerate(cfg)]
@@ -142,7 +167,7 @@ def main():
                 tiers = soft_cfg if policy == "conf" else cfg
                 final, shares = run_cascade(tiers, policy, thr, P, lat, y_te)
                 m = C.full_metrics(y_te, final)
-                row = {"split": split_i, "config": "->".join(cfg), "n_tiers": len(cfg),
+                row = {"split": split_i, "protocol": args.protocol, "config": "->".join(cfg), "n_tiers": len(cfg),
                        "policy": policy, "conf_threshold": thr,
                        "share_tier1": shares[0], "share_tier2": shares[1] if len(shares) > 1 else 0.0,
                        "share_tier3": shares[2] if len(shares) > 2 else 0.0,
@@ -158,13 +183,14 @@ def main():
                 rows.append(row)
 
     res = pd.DataFrame(rows)
-    res.to_csv(C.RESULTS_DIR / "tier_results.csv", index=False)
-    pd.DataFrame(lat_rows).to_csv(C.RESULTS_DIR / "tier_model_latency.csv", index=False)
+    res.to_csv(C.RESULTS_DIR / f"tier{suf}_results.csv", index=False)
+    if lat_rows:
+        pd.DataFrame(lat_rows).to_csv(C.RESULTS_DIR / f"tier_model_latency{suf}.csv", index=False)
     keys = ["config", "n_tiers", "policy", "conf_threshold"]
     num = res.select_dtypes("number").drop(columns=["split"] + [k for k in keys if k in res], errors="ignore")
     g = res.groupby(keys, sort=False)
     summary = pd.concat([g[num.columns].mean().add_suffix("_mean"), g[num.columns].std().add_suffix("_std")], axis=1).reset_index()
-    summary.to_csv(C.RESULTS_DIR / "tier_summary.csv", index=False)
+    summary.to_csv(C.RESULTS_DIR / f"tier{suf}_summary.csv", index=False)
     C.log("Done.")
 
 

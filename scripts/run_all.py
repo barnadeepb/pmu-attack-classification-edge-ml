@@ -20,6 +20,11 @@ Steps
   05 svm study              ~1-3 h     like-for-like, learning curve, Nystroem
   06 tuning                 ~1-3 h     randomized search + refit on 5 splits
   07 importance             ~30-60 min permutation importance on every split
+Follow-up steps (opt-in: only run when named with --only)
+  02b sweep, blocked protocol     accuracy only, no latency
+  03b tier study, blocked         accuracy only; latencies reused from the edge-dell tier run
+  06b tuning, blocked             scenario-grouped search CV, accuracy only
+  08 latency repeatability        edge device only; fresh process per repeat
 (durations are rough guesses for a 4-core i5-7500T; the log shows real progress)
 """
 
@@ -43,7 +48,16 @@ STEPS = {
     "05": ("05_svm_study.py", []),
     "06": ("06_tuning.py", []),
     "07": ("07_importance.py", []),
+    # --- follow-up steps for the camera-ready revision: opt-in, run only when named with --only ---
+    # accuracy-only reruns of 02/03/06 under the blocked protocol (latency does not depend on the split)
+    "02b": ("02_complexity_sweep.py", ["--protocol", "blocked", "--skip-latency"]),
+    "03b": ("03_tier_study.py", ["--protocol", "blocked", "--latency-from", "@LATENCY_FROM@"]),
+    "06b": ("06_tuning.py", ["--protocol", "blocked", "--skip-latency"]),
+    # latency-only repeatability study; run on the edge device
+    "08": ("08_latency_repeat.py", []),
 }
+OPT_IN = {"02b", "03b", "06b", "08"}
+DEFAULT_LATENCY_FROM = ROOT / "results" / "runs" / "edge-dell" / "tier_model_latency.csv"
 
 
 def main():
@@ -54,6 +68,8 @@ def main():
     ap.add_argument("--skip", nargs="*", default=[], help="step numbers to skip")
     ap.add_argument("--force", nargs="*", default=[], help="step numbers to re-run even if finished")
     ap.add_argument("--quick-scenarios", action="store_true", help="step 04 without the two MLPs")
+    ap.add_argument("--latency-from", default=str(DEFAULT_LATENCY_FROM),
+                    help="step 03b: tier_model_latency.csv whose latencies are reused")
     ap.add_argument("--svm-max-n", type=int, default=None, help="step 05: largest learning-curve size")
     args = ap.parse_args()
 
@@ -73,6 +89,8 @@ def main():
 
     timings = {}
     for key, (script, extra) in STEPS.items():
+        if key in OPT_IN and (args.only is None or key not in args.only):
+            continue   # opt-in steps never run unless named explicitly
         if args.only is not None and key not in args.only:
             continue
         if key in args.skip:
@@ -82,6 +100,7 @@ def main():
             print(f"[{key}] already finished ({marker.read_text().strip()}), skipping. Use --force {key} to redo.")
             continue
 
+        extra = [args.latency_from if a == "@LATENCY_FROM@" else a for a in extra]
         cmd = [sys.executable, str(HERE / script)] + list(extra)
         if key == "04" and args.quick_scenarios:
             cmd.append("--quick")
