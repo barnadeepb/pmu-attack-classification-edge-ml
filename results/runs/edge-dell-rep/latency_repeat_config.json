@@ -1,0 +1,30 @@
+{
+  "env": {
+    "tag": "edge-dell-rep",
+    "smoke": false,
+    "python": "3.12.10",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "processor": "Intel64 Family 6 Model 158 Stepping 9, GenuineIntel",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit_learn": "1.9.0",
+    "xgboost": "3.4.1",
+    "scipy": "1.18.1",
+    "joblib": "1.5.3",
+    "cpu_count": 4,
+    "ram_gib": 7.9,
+    "cpu_freq_mhz_current": 2712,
+    "cpu_freq_mhz_max": 2712
+  },
+  "repeats": 3,
+  "latency_samples": 1000,
+  "latency_warmup": 100,
+  "tuned_xgb_params": {
+    "n_estimators": 400,
+    "max_depth": 6,
+    "learning_rate": 0.3,
+    "subsample": 0.7,
+    "colsample_bytree": 0.8
+  },
+  "sentinel": "Random Forest (200)"
+}

@@ -1,0 +1,32 @@
+# Benchmark environment (tag: edge-dell-rep)
+
+Collected automatically by scripts/00_system_info.py.
+
+- **tag**: edge-dell-rep
+- **smoke**: False
+- **python**: 3.12.10
+- **platform**: Windows-10-10.0.19045-SP0
+- **processor**: Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
+- **numpy**: 2.5.2
+- **pandas**: 3.0.5
+- **scikit_learn**: 1.9.0
+- **xgboost**: 3.4.1
+- **scipy**: 1.18.1
+- **joblib**: 1.5.3
+- **cpu_count**: 4
+- **ram_gib**: 7.9
+- **cpu_freq_mhz_current**: 2712
+- **cpu_freq_mhz_max**: 2712
+- **computer_system**: {"Manufacturer":"Dell Inc.","Model":"OptiPlex 7050","SystemType":"x64-based PC","TotalPhysicalMemory":8467828736}
+- **bios**: {"Manufacturer":"Dell Inc.","SMBIOSBIOSVersion":"1.27.0","ReleaseDate":"\/Date(1694995200000)\/"}
+- **cpu**: {"Name":"Intel(R) Core(TM) i5-7500T CPU @ 2.70GHz","NumberOfCores":4,"NumberOfLogicalProcessors":4,"MaxClockSpeed":2712,"L2CacheSize":1024,"L3CacheSize":6144}
+- **memory_modules**: {"Capacity":8589934592,"Speed":2400,"Manufacturer":"01980000802C"}
+- **os**: {"Caption":"Microsoft Windows 10 Pro","Version":"10.0.19045","BuildNumber":"19045"}
+- **power_plan**: Power Scheme GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c  (High performance)
+- **disk**: {"Model":"INTEL SSDSC2BW240A4","MediaType":"Fixed hard disk media","Size":240054796800}
+
+## pip freeze
+
+```
+
+Wrote C:\Workspace\pmu-attack-classification-edge-ml\results\runs\edge-dell-rep\system_info.json
